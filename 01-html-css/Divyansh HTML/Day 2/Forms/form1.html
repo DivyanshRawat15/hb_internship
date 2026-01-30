@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>FORM 01</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <link rel="stylesheet" href="./form1.css">
+</head>
+<body>
+    
+    <div class="form">
+        <h1>Contact Us</h1>
+        <div class="fullname">
+            <p>YOUR NAME*</p>
+            <!-- <label for="name">Your Name</label><br> -->
+            <input type="text" id="fname" name="fname" placeholder="First Name" required>
+            <input type="text" id="lname" name="lname" placeholder="Last Name" required><br><br>
+        </div>
+        <div class="emailid">
+            <p>EMAIL ADDRESS*</p>
+            <!-- <label for="Mail">Email Address</label><br> -->
+            <input type="email" id="email" name="email" placeholder="Eg. example@email.com" required><br><br>
+        </div>
+        <div class="telephone">
+            <p>PHONE NUMBER</p>
+            <!-- <label for="number">Phone Number</label><br> -->
+            <input type="tel" id="number" name="number" placeholder="Eg. +1 800 000000"><br><br>
+        </div>
+        <div class="country">
+            <p>COUNTRY</p>
+            <!-- <label for="country">Country</label><br> -->
+                <select id="country" name="country">
+                    <option value="india">India</option>
+                    <option value="china">China</option>
+                    <option value="usa">USA</option>
+                    <option value="uk">UK</option>
+                    <option value="japan">Japan</option>
+                </select><br><br>
+        </div>
+        <div class="gender">
+            <p>GENDER</p>
+            <!-- <label for="gender">Gender</label><br> -->
+            <input type="radio" id="male" name="gender" value="male">
+            <label for="male">Male</label>
+            <input type="radio" id="female" name="gender" value="female">
+            <label for="female">Female</label><br><br>
+        </div>
+        <div class="wrkintr">
+            <p>WORK INTEREST</p>
+            <!-- <label for="workinterest">Work Interest</label><br> -->
+            <input type="checkbox" id="account" name="account" value="account">
+            <label for="account">Account</label>
+            <input type="checkbox" id="business" name="business" value="business">
+            <label for="business">Business</label>
+            <input type="checkbox" id="management" name="management" value="management">
+            <label for="management">Management</label>
+            <input type="checkbox" id="officework" name="officework" value="officework">
+            <label for="officework">Office Work</label>
+            <input type="checkbox" id="receptionist" name="receptionist" value="receptionist">
+            <label for="receptionist">Receptionist</label><br><br>
+        </div>
+        <div class="mssg">
+            <p>MESSAGE*</p>
+            <!-- <label for="message">Message</label><br> -->
+            <textarea id="message" name="message" placeholder="Please enter your comments..." required></textarea><br><br>
+        </div>
+        <div class="submit">
+            <input type="submit" name="submit" value="Submit">
+        </div>
+    </div>  
+</body>
+</html>

@@ -1,0 +1,44 @@
+
+#main-wrapper-4 {
+      width: 500px;
+      background: #97d34d;
+}
+#main-wrapper-4 #header {
+      clear: both;
+      background: #ff0000;
+      padding: 10px 0;
+      text-align: center;
+}
+#main-wrapper-4 #middle {
+      clear: both;
+      background: #97d34d;
+      padding: 80px 0;
+      text-align: center;
+}
+#main-wrapper-4 #middle .left-middle {
+      width: 166px;
+      padding: 70px 10px;
+      float: left;
+      background: #adc52b;
+      text-align: center;
+}
+#main-wrapper-4 #middle .middle-column {
+      width: 120px;
+      padding: 70px 10px;
+      float: middle;
+      text-align: center;
+      background: #adc52b;
+}
+#main-wrapper-4 #middle .right-middle {
+      width: 166px;
+      padding: 70px 10px;
+      float: right;
+      background: #adc52b;
+      text-align: center;
+}
+#main-wrapper-4 #footer {
+      clear: both;
+      background: #5a57ef;
+      padding: 10px 0;
+      text-align: center;
+}

@@ -1,0 +1,41 @@
+body{
+    background-color: blanchedalmond;
+}
+.form{
+    background-color: rgb(251, 201, 125);
+    padding: 20px;
+    text-align: center;
+    margin: 20px 550px;
+}
+.form #fline{
+    color: red;
+}
+.alignments{
+    text-align: justify;
+}
+
+form{
+    margin: 20px;
+    text-align: center;
+    display: flex;
+    justify-content: center;
+}
+input{
+    width: 100%;
+    height: 25px;
+}
+form #search{
+    width: 450px;
+    height: 28px;
+}
+form #submit{
+    width: 150px;
+    height: 40px;
+    border-radius: 0; 
+}
+
+input[type="file"]::file-selector-button{
+    border-radius: 0px;
+    width: 90px;
+    height: 25px;
+}

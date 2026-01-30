@@ -1,0 +1,43 @@
+body{
+    margin: 0;
+    padding: 0;
+}
+
+nav{
+    background-color: whitesmoke;
+    
+}
+
+img{
+    display: flex;
+    justify-content: center;
+}
+
+ul{
+    list-style-type: none;
+    margin:0;
+    padding: 0;
+    overflow: hidden;
+    display:flex;
+    background-color: rgb(241, 61, 61);
+    justify-content: center;
+    
+}
+
+ul li{
+    float: left;
+    width: 100%;
+}
+
+ul li a{
+    display: block;
+    color: red;
+    text-align: center;
+    padding: 14px 16px;
+    text-decoration: none;
+    background-color: rgb(187, 255, 0);
+}
+
+ul li a:hover{
+    background-color: #111111;
+}

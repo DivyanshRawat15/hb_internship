@@ -1,0 +1,66 @@
+.table table{
+    width:75%;
+    border-collapse: collapse;
+    border:none;
+    border: hidden;
+    color: white;
+}
+
+h1 p{
+    margin-left: 40px;
+}
+table th{
+    border: none;
+    width: 100%;
+    padding: 15px;
+}
+table td{
+    border: none;
+}
+
+#number{
+    height: 30px;
+    width:auto;
+}
+
+#msgopt{
+    width:63%;
+    height: 30px;
+    position: relative;
+    left: 2%;
+}
+
+#fname, #lname{
+    width:97%;
+    height: 30px;
+}
+
+#email, #mssg{
+    width: 98%;
+    height: 30px;
+}
+
+input[type=submit] {
+  width: 30%;
+  background-color: #ffffff00;
+  color: rgb(255, 255, 255);
+  padding: 15px;
+  margin: 8px 1px;
+  border: "1" solid white;
+  border-color: white;
+  border-radius: 10px;
+  cursor: pointer;
+}
+
+.table h1 p{
+    margin-left: 20px;
+}
+
+.submit{
+    text-align: left;
+}
+body{
+    background-color: #2eb1e6;
+    background: linear-gradient(62deg, rgba(46, 177, 230, 1) 0%, rgba(88, 204, 136, 1) 100%, rgba(237, 221, 83, 1) 100%);
+    padding-left: 20%;
+}

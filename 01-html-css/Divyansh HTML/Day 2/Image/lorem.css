@@ -1,0 +1,12 @@
+.img-with-txt{
+    float: right;
+    width: 100%;
+}
+.img-with-txt img{
+    float:left;
+    margin: 20px 20px 20px 20px;
+}
+.img-with-txt p{
+    font-size: 15px;
+    line-height: 22px;
+}

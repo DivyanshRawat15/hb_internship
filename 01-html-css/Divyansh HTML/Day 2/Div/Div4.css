@@ -1,0 +1,55 @@
+body{
+    background-color: bisque;
+    width: 100%;
+}
+
+.main{
+    display: grid;
+    grid-template-columns: auto auto auto auto;
+    gap: 0px;
+    margin-top: 0px;
+    margin-bottom: 10px;
+    width: 1550px;
+}
+
+.image{
+    float: left;
+    width: 300px;
+    border: 1px solid #ccc;
+    padding: 8px;
+    background: #fff;
+    margin: 10px;
+}
+
+.image h3{
+    font-size: 13px;
+    color: #e11613;
+    margin-bottom: 8px;
+}
+
+.image h3 a{
+    font-size: 13px;
+    color: #e11613;
+}
+
+.image h3 a:hover{
+    color:black;
+}
+
+.image p {
+    font-size: 12px;
+    color: #333;
+    line-height: 18px;
+    margin-bottom: 10px;
+}
+.image a {
+    color: #248000;
+    font-size: 12px;
+    text-decoration: none;
+}
+.image a:hover {
+    color: #000;
+}
+.image.last {
+    margin-right: 0px;
+}

@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>FORM 02</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <link rel="stylesheet" href="./form2.css">
+</head>
+<body>
+    <div class="table">
+        <h1 style="color: white;">Contact Form</h1>
+        <p style="color: white;">Please fill in your information and we'll be sending your order in no time.</p>
+        <table border="1">
+            <tr>
+                <td>Your Name</td>
+                <th colspan="2">
+                    <input type="text" id="fname" name="fname" placeholder="First Name">
+                </th>
+                <th colspan="2">
+                    <input type="text" id="lname" name="lname" placeholder="Last Name">
+                </th>
+            </tr>
+            <tr>
+                <td>Your Email</td>
+                <th colspan="4">
+                    <input type="email" id="email" name="email" placeholder="Eg. example@email.com" required>
+                </th>
+            </tr>
+            <tr>
+                <td>Phone*</td>
+                <th>
+                    <input type="tel" id="number" name="number1" placeholder="###" min="3" max="3">
+                </th>
+                <th colspan="2">
+                    <input type="tel" id="number" name="number2" placeholder="###" min="3" max="3">
+                </th>
+                <th>
+                    <input type="tel" id="number" name="number3" placeholder="####" min="4" max="4">
+                </th>
+            </tr>
+            <tr>
+                <td>Message Subject*</td>
+                <td colspan="4">
+                    <select id="msgopt" name="msgopt">
+                        <option value="other">Other</option>
+                        <option value="tracking">Tracking</option>
+                        <option value="inquiry">Inquiry</option>
+                        <option value="complain">Complain</option>
+                        <option value="return">Return</option>
+                    </select>
+                </td>
+            </tr>
+            <tr>
+                <td>Message*</td>
+                <th colspan="4">
+                    <textarea id="mssg" name="mssg" required></textarea>
+                    <!--<input type="text" id="mssg" name="mssg">-->
+                </th>
+            </tr>
+            <tr>
+                <td>Verification*</td>
+                <th colspan="4"> </th>
+            </tr>
+        </table>
+    </div>
+
+    <hr width="74%" align="left">
+    <div class="submit">
+        <input type="submit" name="submit" value="Submit">
+    </div>
+
+</body>
+</html>
+
+ <!--       <div class="form">
+        <h1>Contact Form</h1>
+        <p>Please fill in your information and we'll be sending your order in no time.</p>
+        <div class="fullname">
+            <label for="name">Your Name</label>
+            <input type="text" id="fname" name="fname" placeholder="First Name" required>
+            <input type="text" id="lname" name="lname" placeholder="Last Name" required><br><br>
+        </div>
+        <div class="emailid">
+            <label for="Mail">Your Email</label>
+            <input type="email" id="email" name="email" placeholder="Eg. example@email.com" required><br><br>
+        </div>
+        <div class="telephone">
+            <label for="number">Phone*</label>
+            <input type="tel" id="number" name="number1" placeholder="###">
+            <input type="tel" id="number" name="number2" placeholder="###">
+            <input type="tel" id="number" name="number3" placeholder="####">            
+            <br><br>
+        </div>
+
+        <div class="msgopt">
+            <label for="msgopt">Message Subject*</label>
+                <select id="msgopt" name="msgopt">
+                    <option value="other">Other</option>
+                    <option value="tracking">Tracking</option>
+                    <option value="inquiry">Inquiry</option>
+                    <option value="complain">Complain</option>
+                    <option value="return">Return</option>
+                </select><br><br>
+        </div>
+        <div class="mssg">
+            <label for="mssg">Message</label>
+            <input type="text" id="mssg" name="mssg">
+        </div>
+        <div class="verification">
+            <label for="verify">Verification</label>
+            <input type="checkbox" id="verify" name="verify" value="verify">
+            <label for="Verify">Verify</label>
+        <div class="gender">
+            <p>GENDER</p>
+            <label for="gender">Gender</label><br>
+         <input type="radio" id="male" name="gender" value="male">
+            <label for="male">Male</label>
+            <input type="radio" id="female" name="gender" value="female">
+            <label for="female">Female</label><br><br>
+        </div>
+        <div class="wrkintr">
+            <p>WORK INTEREST</p>
+            <label for="workinterest">Work Interest</label><br>
+            <input type="checkbox" id="account" name="account" value="account">
+            <label for="account">Account</label>
+            <input type="checkbox" id="business" name="business" value="business">
+            <label for="business">Business</label>
+            <input type="checkbox" id="management" name="management" value="management">
+            <label for="management">Management</label>
+            <input type="checkbox" id="officework" name="officework" value="officework">
+            <label for="officework">Office Work</label>
+            <input type="checkbox" id="receptionist" name="receptionist" value="receptionist">
+            <label for="receptionist">Receptionist</label><br><br>
+        </div>
+        <div class="submit">
+            <input type="submit" name="submit" value="Submit">
+        </div>
+    </div>-->

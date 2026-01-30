@@ -1,0 +1,23 @@
+body{
+    background-color: rgba(140, 238, 244, 0.844);
+    text-align: center;
+}
+
+.main{
+    margin-top: 160px;
+}
+
+.circle{
+    width: 150px;
+    height: 150px;
+    background-color: rgb(215, 66, 153);
+    border-radius: 50%;
+    position: absolute;
+    top:500px;
+    right:400px;
+}
+.circle img{
+    position: absolute;
+    top: 47px;
+    right: 47px;
+}

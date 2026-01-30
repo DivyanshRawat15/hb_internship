@@ -1,0 +1,106 @@
+.left-pos-div {
+width: 450px;
+float: left;
+}
+.position-left-preview {
+float: left;
+width: 450px;
+margin-bottom: 40px;
+
+.color-bg1 {
+position: relative;
+width: 370px;
+height: 105px;
+border: 1px solid red;
+background: #333333;
+border-radius: 8px;
+font-size: 22px;
+text-align: center;
+padding: 80px 15px 15px 15px;
+color: #fff;
+}
+.position-circle {
+background: url(../images/circle.png) no-repeat;
+width: 49px;
+height: 48px;
+position: absolute;
+right: -15px;
+top: -15px;
+padding: 8px 5px 5px 5px;
+color: #fff;
+font-size: 14px;
+text-align: center;
+font-weight: bold;
+}
+.fix-pos-div {
+width: 100px;
+position: fixed;
+left: 50px;
+top: 50px;
+}
+.fix-pos-div a img {
+margin-bottom: 10px;
+}
+.z-index-new {z-index:-1;}}
+
+.border-radius {
+-webkit-border-radius: 10px;
+-moz-border-radius: 10px;
+background: #fff;
+border: solid 1px #555;
+border-radius: 10px;
+box-shadow: inset 5px 5px 5px 5px #888;
+height: 50px;
+width: 100%;
+display: block;
+line-height: 48px;
+}
+.gradient-color {
+-moz-border-radius: 10px;
+border-radius: 10px;
+-webkit-border-radius: 10px;
+background: #5998ca;
+background: -moz-linear-gradient(top,#5998ca 0%, #0e5da1 100%);
+background: -webkit-gradient(linear,left top, left bottom, color-stop(0%, #5998ca), color-stop(100%, #0e5da1));
+background: -webkit-linear-gradient(top,
+#5998ca 0%, #0e5da1 100%);
+background: -o-linear-gradient(top, #5998ca 0%, #0e5da1 100%);
+color: #fff;
+border: solid 1px #333;
+}
+
+.btn-gradient-css {
+width: 100%;
+height: 50px;
+display: inline-block;
+text-decoration: none;
+text-align: center;
+border-radius: 10px;
+-webkit-border-radius: 10px;
+border: solid 1px #555;
+background: -moz-linear-gradient(top,
+#ffffff 0%, #98c772 100%);
+background: -webkit-gradient(linear, left top,
+left bottom, color-stop(0%, #ffffff),
+color-stop(100%, #98c772));
+background: -webkit-linear-gradient(top,#ffffff 0%, #98c772 100%);
+background: -o-linear-gradient(top, #ffffff 0%, #98c772 100%);
+line-height: 50px;
+-moz-border-radius: 10px;
+}
+
+.btn-gradient-css {
+width: 100%;
+height: 50px;
+display: inline-block;
+text-decoration: none;
+border-radius: 10px;
+-webkit-border-radius: 10px;
+border: solid 1px #555;
+background: -moz-linear-gradient(top,#ffffff 0%, #98c772 100%);
+background: -webkit-gradient(linear, left top,left bottom, color-stop(0%, #ffffff),color-stop(100%, #98c772));
+background: -webkit-linear-gradient(top,#ffffff 0%, #98c772 100%);
+background: -o-linear-gradient(top, #ffffff 0%, #98c772 100%);
+line-height: 50px;
+-moz-border-radius: 10px;
+}

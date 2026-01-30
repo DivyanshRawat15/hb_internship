@@ -1,0 +1,25 @@
+table, th, td {
+  border: 1px solid black;
+  border-collapse: collapse;
+}
+
+th:nth-child(1),td:nth-child(1) {
+  background-color: #706e6ec1;
+}
+
+.button{
+    float: right;
+    padding: 20px;
+}
+
+th, td {
+  text-align: center;
+  padding: 8px;
+}
+
+tr:nth-child(1) {
+  background-color: #706e6ec1;
+}
+tr:nth-child(2 ){
+    background-color: #706e6ec1;
+}

@@ -1,0 +1,27 @@
+h1 {
+    color: deepskyblue;
+    text-align: center;
+    font-family: 'Times New Roman', Times, serif;
+}
+.Resume {
+    border:solid;
+    border-width: 4px;
+    align-items: center;
+    border-color: deepskyblue;
+    padding-left: 20px;
+    padding-right: 20px;
+    padding-top: 10px;
+    padding-bottom: 30px;
+    margin-top: 20px;
+    margin-bottom: 20px;
+    margin-left: 20px;
+    margin-right: 20px;
+}
+.Sign {
+    float: right;
+    padding-right:40px;
+}
+.submit{
+    display: flex;
+    justify-content: space-between;
+}
