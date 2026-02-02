@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Key Group Detector</title>
+
+<style>
+body{
+    font-family: Arial;
+    background:#f2f2f2;
+    text-align:center;
+}
+
+input{
+    padding:10px;
+    width:300px;
+    font-size:18px;
+}
+
+button{
+    padding:10px 20px;
+    font-size:16px;
+    margin-top:10px;
+}
+
+.container{
+    display:flex;
+    justify-content:center;
+    gap:20px;
+    margin-top:30px;
+}
+
+.box{
+    width:120px;
+    height:120px;
+    background:#ddd;
+    border-radius:10px;
+    font-size:22px;
+    font-weight:bold;
+    display:flex;
+    flex-direction:column;
+    align-items:center;
+    justify-content:center;
+}
+
+</style>
+</head>
+
+<body>
+
+<h2>Character Box Detector</h2>
+
+<input type="text" id="txt" placeholder="Enter string">
+<br>
+<button onclick="process()">Check</button>
+
+<div class="container">
+    <div id="qBox" class="box">Q<br><span id="qCount">0</span></div>
+    <div id="aBox" class="box">A<br><span id="aCount">0</span></div>
+    <div id="zBox" class="box">Z<br><span id="zCount">0</span></div>
+    <div id="vBox" class="box">V<br><span id="vCount">0</span></div>
+</div>
+
+<script>
+
+let qCounter = 0;
+let aCounter = 0;
+let zCounter = 0;
+let vCounter = 0;
+
+function process(){
+
+    let text = document.getElementById("txt").value.toLowerCase();
+
+    for(let i=0;i<text.length;i++){
+
+        let ch = text[i];
+
+        // Vowels check first
+        if("aeiou".includes(ch)){
+            changeBox("vBox");
+            vCounter++;
+            document.getElementById("vCount").innerHTML = vCounter;
+        }
+
+        // Q group
+        else if("qwer".includes(ch)){
+            changeBox("qBox");
+            qCounter++;
+            document.getElementById("qCount").innerHTML = qCounter;
+        }
+
+        // A group
+        else if("asdf".includes(ch)){
+            changeBox("aBox");
+            aCounter++;
+            document.getElementById("aCount").innerHTML = aCounter;
+        }
+
+        // Z group
+        else if("zxcv".includes(ch)){
+            changeBox("zBox");
+            zCounter++;
+            document.getElementById("zCount").innerHTML = zCounter;
+        }
+    }
+}
+
+function changeBox(id){
+    let box = document.getElementById(id);
+    box.style.background = getRandomColor();
+}
+
+function getRandomColor(){
+    return "#" + Math.floor(Math.random()*16777215).toString(16);
+}
+
+</script>
+
+</body>
+</html>
