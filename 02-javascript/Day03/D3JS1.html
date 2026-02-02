@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <style>
+        #btns{display: none;}
+    </style>
+    <title>D3JS1</title>
+</head>
+<body>
+    <h1>Create a Counter</h1>
+    <p>
+        Create One Input Box & Submit Button.
+        If Button is Submitted, then another 3 buttons should appear.
+        Button 1: Increment By 1
+        Button 2: Increment By 2
+        Button 3: Increment By 5
+        Button 4: Decrement By 1
+        Button 5: Decrement By 2
+        Button 6: Decrement By 5
+
+        Final Value: {N}. Final Valuer should keep changing on the click of any button according to the logic.
+    </p>
+
+    <input type="number" name="numb" id="numb" placeholder="Enter the Number">
+    <button onclick="func()">SUBMIT</button><br>
+
+    <div id="btns">
+        <h2>Counter Controls!</h2>
+        <button onclick="changevalue(1)">Increment +1</button>
+        <button onclick="changevalue(2)">Increment +2</button>
+        <button onclick="changevalue(5)">Increment +5</button>
+        <br>
+        <button onclick="changevalue(-1)">Decrement -1</button>
+        <button onclick="changevalue(-2)">Decrement -2</button>
+        <button onclick="changevalue(-5)">Decrement -5</button>
+    </div>
+
+    <p id="output"></p>
+
+    <script>
+        let c = 0;
+        let inp = 0;
+        
+        //counter program
+        function func(){
+
+            inp = document.getElementById("numb").value;
+            //displaying the alert if the input is empty and user clicked submit button...
+            if (c === ""){
+                alert("Please Enter the Number!");
+                return;
+            }
+            c = Number(inp);
+
+            var z = document.getElementById("btns");
+            if (z.style.display === "none"){
+                z.style.display = "block";
+            } else { z.style.display = "none"; }
+            document.getElementById("output").innerHTML = "Final Value : " + c;
+        }
+
+        function changevalue(x){
+            c += x;
+            document.getElementById("output").innerHTML = "Final Value : " + c;
+        }
+    </script>
+</body>
+</html>

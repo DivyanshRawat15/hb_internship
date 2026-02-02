@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>D3JS6</title>
+</head>
+<body>
+    <h1>Inversion Count</h1>
+    <p>
+        For an array, inversion count indicates how far (or close) the array is from being sorted.
+        If array is already sorted then the inversion count is 0. If an array is sorted in the reverse order then the inversion count is the maximum.<br>
+        Formally, two elements a[i] and a[j] form an inversion if a[i] > a[j] and i < j.
+
+    </p>
+    <label>Enter Array (comma separated):</label><br>
+    <input type="text" id="arrayInput" placeholder="1,5,6,8,9,8"><br><br>
+    <button onclick="func()">Find!</button>
+    <p id="output"></p>
+
+    <script>
+        function func() {
+            let count = 0;
+            var arrInput = document.getElementById("arrayInput").value;
+            let arr = arrInput.split(",");
+            let x = arr.length;
+
+            for (let i = 0; i < x; i++) {
+                for (let j = i + 1; j < x; j++) {
+                    if (arr[i] > arr[j]) {
+                        count++;
+                    }
+                }
+            }
+            document.getElementById("output").innerHTML = "Count is " + count;
+            return;
+        }
+    </script>
+</body>
+</html>

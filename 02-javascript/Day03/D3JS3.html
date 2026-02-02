@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>D3JS3</title>
+</head>
+<body>
+    <h1>Change the text in the first and the last list item element in the list element. Change it to 'first', 'second', 'third' & repeat.</h1>
+    <p>If First Combo, then only change the first item, On the Second Combo only the second item, On the third Combo only the third item & repeated…</p>
+    <ul id="list1">
+        <li>1</li>
+        <li>2</li>
+        <li>3</li>
+    </ul>
+    <ul id="list2">
+        <li>a</li>
+        <li>b</li>
+        <li>c</li>
+    </ul>
+    <ul id="list3">
+        <li>apple</li>
+        <li>banana</li>
+        <li>orange</li>
+    </ul>
+    <ul id="list4">
+        <li>test1</li>
+        <li>test2</li>
+        <li>test3</li>
+    </ul>
+    <button onclick="chgtxt()">Nxt Combo</button>
+
+    <script>
+        let combo = 0;
+
+        function chgtxt() {
+
+            const lists = document.querySelectorAll("ul");
+            const text = ["first", "second", "third"];
+
+            const index = combo % 3;
+
+            lists.forEach(list => {
+                const items = list.querySelectorAll("li");
+                items[index].textContent = text[index];
+            });
+
+            combo++;
+        }
+    </script>
+</body>
+</html>

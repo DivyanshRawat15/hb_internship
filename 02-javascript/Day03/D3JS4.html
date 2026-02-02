@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>D3JS4</title>
+</head>
+<body>
+    <h1>Remove all the consecutive duplicate pairs and concatenate the remaining string to replace the original string.</h1>
+    <p>Input = aaabbaaccd</p>
+
+    <button onclick="removePair()">Start</button>
+    <p id="output"></p>
+
+    <script>
+        function removePair(){
+            let str = "aaabbaaccd";
+            const stack = [];
+            for(let ch of str){
+                if (stack.length > 0 && stack[stack.length - 1] === ch){
+                    console.log(stack);
+                    stack.pop();
+                    console.log(stack);
+                } else{
+                    stack.push(ch);
+                    // console.log(stack);
+                }
+            }
+            const result = stack.join(" ");
+            console.log(result);
+            document.getElementById("output").innerHTML = 
+            result.length === 0 ? "Empty String":result;
+        }
+    </script>
+</body>
+</html>
