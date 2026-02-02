@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>JS 6</title>
+</head>
+<body>
+    <h1>
+        Write a program that prints Fibonacci series up to user input range. [lowest possible]
+    </h1>
+    <button onclick="func()">Click Me!</button>
+    <p id="fibo"> </p>
+
+    <script>
+        let n1 = 0;
+        let n2 = 1;
+        let n3 = 0;
+        let y = "";
+        let i = 0;
+        function func(){
+            let x = parseInt(prompt("User Input:"));
+            for (i; i<=x; i++){
+                y += n1 + ", ";
+                n3 = n2+n1;
+                n1=n2;
+                n2=n3;
+            }
+            document.getElementById("fibo").innerHTML = y;
+        }
+    </script>
+</body>
+</html>

@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>JS 12</title>
+</head>
+<body>
+    
+    <h1>Find the Leaders. There should be a single array. Your task is to find leaders in the
+array. An element of the array is a leader if it is greater than or equal to all the
+elements to its right side. The rightmost element is always a leader.</h1>
+
+<button onclick="leaders()">Search</button>
+<p id="result"></p>
+
+<script>
+    function leaders(){
+        var arr = [19,17,4,3,5,2,18,1];
+        var leader = [];
+        var maxfr = arr[arr.length - 1];
+        console.log("maxfr",maxfr,arr[-1]);
+        leader.push(maxfr);
+        for(var i = arr.length - 2; i>=0; i--){
+            if (arr[i] >= maxfr){
+                maxfr = arr[i];
+                leader.push(arr[i]);
+            }
+        }
+        leader.reverse();
+        document.getElementById("result").innerHTML = "Leaders in the array: " + leader.join(", ");
+    }
+</script>
+</body>
+</html>

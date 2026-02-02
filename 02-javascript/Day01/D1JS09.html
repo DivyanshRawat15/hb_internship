@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>JS 9</title>
+</head>
+<body>
+    <h1>Write a program that replaces the word from a given String, if the string does not have a word then print the string as it is...</h1>
+
+    <button onclick="func()">Click Me!</button>
+
+    <script>
+        function func() {
+                const sentence = prompt("Enter a sentence:");
+
+                if (sentence === null || sentence.trim() === "") {
+                    alert("No sentence provided. Exiting.");
+                    return;
+                }
+
+                // 2. Get the replace/replace with values from the user in the format "{replace}|{replacewith}".
+                const replaceInput = prompt("Enter the word to replace and the replacement word separated by this(|)");
+
+                if (replaceInput === null || replaceInput.trim() === "") {
+                    alert("No replacement input provided. Original sentence: " + sentence);
+                    return;
+                }
+
+
+                const parts = replaceInput.split('|');
+
+                const wordToReplace = parts[0].trim();
+                const replacementWord = parts[1].trim();
+
+                if (wordToReplace === "") {
+                    alert("The word to replace cannot be empty. Original sentence: " + sentence);
+                    return;
+                }
+
+                const regex = new RegExp('\\b' + wordToReplace + '\\b', 'gi');
+                
+                if (!regex.test(sentence)) {
+                    alert("The word '" + wordToReplace + "' was not found in the sentence. Original sentence: " + sentence);
+                } else {
+                    const newSentence = sentence.replace(regex, replacementWord);
+                    alert("Original sentence: " + sentence + "\nNew sentence: " + newSentence);
+                }
+        }
+        
+    </script>
+</body>
+</html>

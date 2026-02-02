@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>JS 10</title>
+</head>
+<body>
+
+<h3>Most Repeated Letter in String</h3>
+
+<input type="text" id="strInput" placeholder="Enter a string">
+<button onclick="func()">Check</button>
+
+<p id="output"></p>
+
+<script>
+function func() {
+    var str = document.getElementById("strInput").value;
+    var output = document.getElementById("output");
+
+    var count = {};
+    var maxChar = "";
+    var maxCount = 0;
+
+
+    for (var i = 0; i < str.length; i++) {
+        var ch = str[i];
+
+        if (count[ch]) {
+            count[ch]++;
+        } else {
+            count[ch] = 1;
+        }
+    }
+
+    for (var key in count) {
+        if (count[key] > maxCount) {
+            maxCount = count[key];
+            maxChar = key;
+        }
+    }
+
+
+    if (maxCount <= 1) {
+        output.innerHTML = "Not Found";
+    } else {
+        output.innerHTML = maxChar + " is repeated " + maxCount + " times";
+    }
+}
+</script>
+
+</body>
+</html>
