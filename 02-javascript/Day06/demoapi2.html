@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>CRUD using Fake API</title>
+</head>
+
+<body>
+
+<h2>CRUD Using Fake API (reqres.in)</h2>
+
+<!-- ================= FORM ================= -->
+
+<label>Name</label><br>
+<input type="text" id="name"><br><br>
+
+<label>Email</label><br>
+<input type="text" id="email"><br><br>
+
+<label>Phone Number</label><br>
+<input type="text" id="phone"><br><br>
+
+<!-- ================= BUTTONS ================= -->
+
+<button onclick="createUser()">Submit</button>
+<button onclick="readUsers()">Read</button>
+<button onclick="updateUser()">Update</button>
+<button onclick="deleteUser()">Delete</button>
+<button onclick="clearForm()">Clear</button>
+
+<p id="output1"></p>
+<p id="output2"></p>
+
+<script>
+
+    let users = [];     // temporary frontend store
+    let selectedId = null;
+
+    /* ==========================================
+    CREATE USER (POST)
+    ========================================== */
+
+    function createUser() {
+
+        const name  = document.getElementById("name").value.trim();
+        const email = document.getElementById("email").value.trim();
+        const phone = document.getElementById("phone").value.trim();
+
+        /* ---------- VALIDATION ---------- */
+
+        if (!name || !email || !phone) {
+            alert("All fields are required");
+            return;
+        }
+
+        const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+        if (!emailRegex.test(email)) {
+            alert("Invalid email");
+            return;
+        }
+
+        if (phone.length !== 10 || isNaN(phone)) {
+            alert("Phone must be 10 digits");
+            return;
+        }
+
+        /* ---------- API CALL ---------- */
+
+        fetch("https://crudcrud.com/api/183950842812438c9c1fb36169402a76/unicorns", {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json"
+            },
+            body: JSON.stringify({
+                name,
+                email,
+                phone
+            })
+        })
+        .then(res => res.json())
+        .then(data => {
+            console.log("User Created (API Response)");
+            document.getElementById("output1").innerHTML = "User Created (API Response)";
+            return "User Created (API Response)";
+            console.log(data);
+            return data;
+            document.getElementById("output1").innerHTML = data;
+
+            users.push(data);   // frontend temporary store
+            clearForm();
+        });
+    }
+
+    /* ==========================================
+    READ USERS (GET)
+    ========================================== */
+
+    function readUsers() {
+
+        fetch("https://crudcrud.com/api/183950842812438c9c1fb36169402a76/unicorns")
+            .then(res => res.json())
+            .then(data => {
+                users = data.data;
+
+                console.log("Users From API:");
+                console.table(users);
+            });
+    }
+
+    /* ==========================================
+    UPDATE USER (PUT)
+    ========================================== */
+
+    function updateUser() {
+
+        const id = prompt("Enter user ID to update:");
+
+        if (!id) return;
+
+        const name  = document.getElementById("name").value.trim();
+        const email = document.getElementById("email").value.trim();
+        const phone = document.getElementById("phone").value.trim();
+
+        if (!name || !email || !phone) {
+            alert("Fill all fields before updating");
+            return;
+        }
+
+        fetch(`https://crudcrud.com/api/183950842812438c9c1fb36169402a76/unicorns/${id}`, {
+            method: "PUT",
+            headers: {
+                "Content-Type": "application/json"
+            },
+            body: JSON.stringify({
+                name,
+                email,
+                phone
+            })
+        })
+        .then(res => res.json())
+        .then(data => {
+            console.log("User Updated:");
+            console.log(data);
+            clearForm();
+        });
+    }
+
+    /* ==========================================
+    DELETE USER (DELETE)
+    ========================================== */
+
+    function deleteUser() {
+
+        const id = prompt("Enter user ID to delete:");
+
+        if (!id) return;
+
+        const confirmDelete = confirm(
+            "Are you sure you want to delete this user?"
+        );
+
+        if (!confirmDelete) return;
+
+        fetch(`https://crudcrud.com/api/183950842812438c9c1fb36169402a76/unicorns ${id}`, {
+            method: "DELETE"
+        })
+        .then(() => {
+            console.log(`User with ID ${id} deleted`);
+            return `User with ID ${id} deleted`;
+        });
+    }
+
+    /* ==========================================
+    CLEAR FORM
+    ========================================== */
+
+    function clearForm() {
+        document.getElementById("name").value = "";
+        document.getElementById("email").value = "";
+        document.getElementById("phone").value = "";
+    }
+</script>
+
+</body>
+</html>

@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Geolocation Tracker</title>
+</head>
+<body>
+    <h1>Geolocation Tracker - ( JavaScript )</h1>
+    <p>Click button to get coordinates.</p>
+    <button onclick="func()">Get Location!</button>
+    <p id="output"></p>
+    
+
+    <script>
+        const x = document.getElementById("output");
+        function func(){
+            try{
+                navigator.geolocation.getCurrentPosition(showPosition); // Here navigator, geolocation, getCurrentPosition are js methods and showPosition is another function
+            } catch {
+                x.innerHTML = err;
+            }
+        }
+        function showPosition(position){
+            x.innerHTML = "Latitude: " + position.coords.latitude + "<br>Longitude: " + position.coords.longitude; // here position is the trigger word to call the functions and gain data accordingly
+        }
+        //this code is the fake API that is used from jsonplaceholder.typicode.com
+        fetch('https://jsonplaceholder.typicode.com/todos/1') 
+      .then(response => response.json())
+      .then(json => console.log(json))
+        
+    </script>
+</body>
+</html>

@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>D6JS01</title>
+</head>
+<body>
+    <h1>CRUD in Fake API</h1>
+    <p>Create CRUD using fake API :<b> https://reqres.in </b></p>
+    <ul>
+        <li>List All Users</li>
+        <li>Create New User</li>
+        <li>Update Existing User</li>
+        <li>Delete User</li>
+    </ul>
+    <p>Key Features: </p>
+    <ul>
+        <li>Ask for Confirmation on delete.</li>
+        <li>Do Validation of all form elements.</li>
+        <li>Do Pagination.</li>
+    </ul>
+
+    <div class="form">
+        <h3>Enter Your Name </h3>
+        <input type="text" id="name" placeholder="Enter Name" required><br>
+
+        <h3>Enter Email Address </h3>
+        <input type="email" id="email" placeholder="Enter Email" required><br>
+
+        <h3>Enter Phone Number </h3>
+        <input type="tel" id="number" placeholder="Eg. +1 800 000000" required><br>
+
+        <button onclick="Validity()">Submit</button>    
+    </div><br><br>
+    <p id="mobval"></p><p id="nameval"></p><p id="mailval"></p>
+
+    <button onclick="dcreate()">Create</button>
+    <button onclick="dread()">Read</button>
+    <button onclick="dupdate()">Update</button>
+    <button onclick="ddelete()">Delete</button><br><br>
+
+    <div class="pagination">
+        <button onclick="changePage(-1)">Previous</button>
+        <span id="pageNo"></span>
+        <button onclick="changePage(1)">Next</button>
+    </div>
+    <script>
+        function Validity(){
+            const inpmob = document.getElementById("number");
+            if(!inpmob.checkValidity()){
+                document.getElementById("mobval").innerHTML = "Number = " + inpmob.validationMessage;
+            } else { document.getElementById("mobval").innerHTML = "Input Ok!" }
+
+            const inpname = document.getElementById("name");
+            if(!inpname.checkValidity()){
+                document.getElementById("nameval").innerHTML = "Name = " + inpname.validationMessage;
+            } else { document.getElementById("nameval").innerHTML = "Input Ok!" }
+
+            const inpmail = document.getElementById("number");
+            if(!inpmail.checkValidity()){
+                document.getElementById("mailval").innerHTML = "Email = " + inpmail.validationMessage;
+            } else { document.getElementById("mailval").innerHTML = "Input Ok!" }
+        }
+    </script>
+</body>
+</html>
