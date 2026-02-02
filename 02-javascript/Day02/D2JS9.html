@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>D2JS9</title>
+</head>
+<body>
+    <h1>Write a JS function which accepts two parameters called startIndex and endIndex, having static number array, sum the array values between startIndex and endIndex.</h1>
+    <p>Static Array = [23, 54, 34, 65, 87, 75, 44, 76, 99, 80, 42, 15]</p>
+    <button onclick="func()">Execute!</button>
+    <p id="output"></p>
+
+    <script>
+        var arr = [23, 54, 34, 65, 87, 75, 44, 76, 99, 80, 42, 15];
+        function func(){
+            let startIndex = parseInt(prompt("Enter Start Element: "));
+            let x = arr.indexOf(startIndex);
+            console.log(x);
+            let endIndex = parseInt(prompt("Enter End Element: "));
+            let y = arr.indexOf(endIndex);
+            console.log(y);
+            var total = 0;
+            let i = 0;
+            for (i = x; i<= y; i++){
+                total += arr[i];
+                console.log(arr[i]);
+            }
+            document.getElementById("output").innerHTML = "Total = " + total;
+        }
+        
+    </script>
+</body>
+</html>

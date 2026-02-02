@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>D2JS01</title>
+</head>
+<body>
+    
+    <h1>Write a js function that corrects the order of the given string.</h1>
+
+<p>index = [ 8, 9 ,10 ,11 ,12 ,7 ,1 ,2 ,3 ,4 ,5 ,6 ]</p>
+<p>string = brain hidden</p>
+<button onclick="find(str, index)">Arrange</button>
+<p id="result"></p>
+
+<script>
+    console.log("Hello");
+    var index = [ 8, 9, 10, 11, 12, 7, 1, 2, 3, 4, 5, 6 ];
+    var str = "brain hidden";
+    function find(str, index){
+    // Output should be "hidden brain"!!
+    let original = str.split('');
+    let result = [];
+
+    for (let i=0; i<index.length; i++){
+        result[index[i] - 1] = original[i];
+    }
+    document.getElementById("result").innerHTML = result.join('');
+    }
+
+</script>
+</body>
+</html>

@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>D2JS4</title>
+</head>
+<body>
+    <h1>remove duplicate characters from enter string</h1>
+
+    <p>var string = "axyxyz"</p>
+    <p>output = az</p>
+    <button onclick="removeDuplicateChars(string)">Click</button>
+    <p id="output"></p>
+    <script>
+        var string = "axyxyz".split('');
+        console.log(string.length);
+
+
+        function removeDuplicateChars(string) {
+            let result = "";
+
+            for (let i = 0; i < string.length; i++) {
+                if (string.indexOf(string[i]) === string.lastIndexOf(string[i])) {
+                    result += string[i];
+                }
+            }
+            console.log(string);
+            document.getElementById("output").innerHTML = result;
+        }
+    </script>
+</body>
+</html>

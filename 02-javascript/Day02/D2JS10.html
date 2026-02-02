@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>D2JS10</title>
+</head>
+<body>
+    <h1>Write a Function to find out the common array values and output as an array, values are of any types</h1>
+    <p>Array 1 = [1, 2, 3, 4, 5]</p>
+    <p>Array 2 = [3, 4, 5, 6, 7]</p>
+    <button onclick="func()">Execute!</button>
+    <p id="output"></p>
+
+    <script>
+        const arr1 = [1, 2, 3, 4, 5];
+        const arr2 = [3, 4, 5, 6, 7];
+        var total = "";
+        function func(){
+            let rearr = [];
+            console.log(arr1[2]);
+            rearr = arr1.concat(arr2);
+            var arr = [];
+            var narr = [];
+            console.log(rearr.length);
+            for (let i = 0; i<rearr.length; i++){
+                if (arr.indexOf(rearr[i])=== -1){
+                    arr.push(rearr[i]);
+                } else {
+                    narr.push(rearr[i]);
+                    console.log(narr);
+                }
+            }
+            for (i=0; i<narr.length; i++){
+                total += narr[i] + ", ";
+            }
+            console.log(arr);
+            document.getElementById("output").innerHTML = "[" + narr + "] // " + total + " these values are in both arrays.";
+
+        }
+    </script>
+</body>
+</html>

@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>D2JS13</title>
+</head>
+<body>
+    <h1>Write a program to return the single value from the array which are not repetitive in array.</h1>
+    <p>arr = [2, 2, 1, 4, 2, 5, 4, 6, 5, 6]</p>
+    <button onclick="func()">Execute!</button>
+    <p id="output"></p>
+
+    <script>
+        let arr = [2, 2, 1, 4, 2, 5, 4, 6, 5, 6];
+        let x, i, j;
+        function func(){
+            for (let i=0; i<arr.length; i++){
+                for(j=0; j< arr.length; j++){
+                    if (i != j && arr[i] == arr[j]){
+                        break;
+                    }
+                }
+                if (j == arr.length){
+                    document.getElementById("output").innerHTML = arr[i];
+                }
+            }
+            
+        }        
+    </script>
+</body>
+</html>

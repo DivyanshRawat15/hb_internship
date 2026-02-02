@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>D2JS16</title>
+</head>
+<body>
+    <h1>Write a program to delete duplicates records.</h1>
+    <p>
+        Input: [{code : “HB123”,email:”hb@yopmail.com”}, 
+                {code : “HB122”,email:”hb@yopmail.com”}, 
+                {code:"HB124",email:"hb1@yopmail.com"}]
+    </p>
+    <button onclick="func()">Execute!</button>
+    <p id="output"></p>
+
+    <script>
+        let records = [
+            {code : "HB123", email : "hb@yopmail.com"},
+            {code : "HB122", email : "hb@yopmail.com"},
+            {code : "HB124", email : "hb1@yopmail.com"}
+        ];
+        function func(){
+            
+            const seen = new Set();
+            const unique = records.filter(record => {
+                if (!seen.has(record.email)){
+                    seen.add(record.email);
+                    return true;
+                }
+                return false;
+            });
+            document.getElementById("output").innerHTML = JSON.stringify(unique, null, 2);
+        }
+    </script>
+</body>
+</html>

@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>D2JS11</title>
+</head>
+<body>
+    <h1>Write a program to return the indices of the array by summing the array values.</h1>
+    <p>nums = [2, 7, 11, 15]</p>
+    <button onclick="func(nums, target)">Execute!</button>
+    <p id="output"></p>
+
+    <script>
+        let nums = [2, 7, 11, 15];
+        let opt = [];
+        let target = "";
+        function func(nums, target){
+            var target = parseInt(prompt("Enter the Target Number: "));
+            console.log(target);
+            for(let i=0; i< nums.length; i++){
+                for (let j = i+1; j<nums.length; j++){
+                    if (nums[i] + nums[j] === target){
+                        opt = [i,j];
+                        console.log(opt);
+                    }
+                }
+            }
+            document.getElementById("output").innerHTML = "No Pairs found!";
+            document.getElementById("output").innerHTML = "[" + opt + "]";
+        }
+    </script>
+</body>
+</html>

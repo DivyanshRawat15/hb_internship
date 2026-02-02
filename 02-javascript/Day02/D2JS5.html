@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>D2JS5</title>
+</head>
+<body>
+    <h1>Write a JS function to sum the odd index value of the array and even index value from
+an array, take a static array value which must contain the number.</h1>
+<p>Static Array = [10, 23, 45, 11, 42, 21, 33, 16, 99]</p>
+    <button onclick="func()">Click Me!</button>
+
+    <p id="even">Even Numbers: </p>
+    <p id="te"></p>
+    <p id="odd">Odd Numbers: </p>
+    <p id="to"></p>
+    <script>
+        function func(){
+            // let x = parseInt(prompt("Enter NUMBER: "));
+            let x = [10, 23, 45, 11, 42, 21, 33, 16, 99];
+            let i=0;
+            console.log(x.length);
+            let odd = 0, even = 0;
+            let z = "";
+            let y = "";
+            for(i; i<x.length; i++){
+                if (x[i]%2 == 0){
+                    z += x[i]+", "; 
+                    even += x[i];                   
+                }
+                else{
+                    y += x[i]+", ";
+                    odd += x[i];
+                } 
+            }
+            document.getElementById("even").innerHTML = z;
+            document.getElementById("te").innerHTML = "Total Even =" + even;
+            document.getElementById("odd").innerHTML = y;
+            document.getElementById("to").innerHTML = "Total Odd =" + odd;
+        }
+    </script>
+</body>
+</html>

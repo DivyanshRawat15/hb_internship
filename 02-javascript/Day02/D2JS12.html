@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>D2JS12</title>
+</head>
+<body>
+    <h1>Write a program to plus one into the array, output as in array form</h1>
+    <p>Digits = [1, 2, 3]</p>
+    <button onclick="func()">Execute!</button>
+    <p id="output"></p>
+
+    <script>
+        let digit = [1, 2, 3];
+        let oput = [];
+        function func() {
+            let oput = [...digit];                 // copy
+            let x = oput[oput.length - 1] + 1;     // last element + 1
+            oput[oput.length - 1] = x;             // update last element
+            console.log(oput);
+            document.getElementById("output").innerHTML = "[" + oput + "]";
+        }
+    </script>
+</body>
+</html>

@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>D2JS3</title>
+</head>
+<body>
+    
+    <h1>Replace the Underscore value with the coming alphabet with the Entered string.</h1>
+
+<p>string = "a_cde_g"</p>
+<p>(Expected) output = "abcdefg"</p>
+<button onclick="func()">Answer!</button>
+<p id="output"></p>
+
+<script>
+    var string = "a_cde_g";
+
+    function func() {
+        let arr = string.split(''); // convert string to array
+
+        for (let i = 0; i < arr.length; i++) {
+            if (arr[i] === '_') {
+                let nextCharCode = arr[i - 1].charCodeAt(0) + 1;
+                arr[i] = String.fromCharCode(nextCharCode);
+            }
+        }
+
+        string = arr.join(''); // convert back to string
+
+        document.getElementById("output").innerHTML = "Output = " + string;
+    }
+</script>
+</body>
+</html>

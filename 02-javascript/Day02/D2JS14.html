@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>D2JS14</title>
+</head>
+<body>
+    <h1>Write a program to find out the maximum repetitive value from the array</h1>
+    <p>Input = [1, 1, 0, 1, 1, 1]</p>
+    <button onclick="func()">Execute!</button>
+    <p id="output"></p>
+
+    <script>
+        function func(){
+            let m = 0, i, c = 0;
+            let inp = [1, 1, 0, 1, 1, 1];
+            for (i=0; i<inp.length; i++){
+                if(inp[i] === 1){
+                    c++;
+                    if(c > m){
+                        m = c;
+                    } 
+                }
+                else {
+                        c = 0;
+                    }
+            }
+            document.getElementById("output").innerHTML = 1 + " repeat " + m + " times. ";
+        }
+    </script>
+</body>
+</html>

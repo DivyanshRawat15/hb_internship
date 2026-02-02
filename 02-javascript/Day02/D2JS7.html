@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>D2JS7</title>
+</head>
+<body>
+    <h1>Write a JS function to rearrange the order given below.</h1>
+    <p>A = [1, 2, 3, 4, 5, 6, 7, 8]</p>
+    <button onclick="func()">Execute!</button>
+    <p id="output"></p>
+
+    <script>
+        function func(){
+            let x = [], y = [];
+            let res = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10];
+            let l = res.length/2;
+            let rearr = [];
+            console.log(res.length);
+            for(let i=0; i<l; i++){
+                rearr.push(res[i]);
+                console.log(res[i]);
+                rearr.push(res[i+l]);
+                console.log(res[i+l]);
+            }
+            document.getElementById("output").innerHTML = "[" + rearr + "]";
+        }
+    </script>
+</body>
+</html>

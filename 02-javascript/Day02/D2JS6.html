@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>D2JS6</title>
+</head>
+<body>
+    <h1>Write a JS function to merge the same array</h1>
+    <p>var Array = [1, 3, 4, 5, 6]</p>
+    <p>Output Expected = [1, 3, 4, 5, 6, 1, 3, 4, 5, 6]</p>
+    
+    <button onclick="func()">
+        Click
+    </button>
+    <p id="result"></p>
+
+    <script>
+        var arr = [1, 3, 4, 5, 6];
+        const rearr = [];
+        function func(){
+            let i = prompt("Enter Number to times to be repeated: ");
+            for (let j = 0; j<i; j++){
+                rearr.push(arr);
+            }
+            document.getElementById("result").innerHTML = "[" + rearr + "]";
+        }
+    </script>
+</body>
+</html>

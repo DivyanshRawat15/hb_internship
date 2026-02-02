@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>D2JS2</title>
+</head>
+<body>
+    <h1>Reverse the string from the given Character Which occur first, take an input - example: var string = "abaa c ac", var char = "c"
+        output = "caabaac"</h1>
+    <button onclick="reverseFromFirstChar(str, ch)">Click Here</button>
+    <p id="output"></p>
+
+    <script>
+        var str = "abaacac";
+        var ch = "c";
+
+        function reverseFromFirstChar(str, ch) {
+            // find first occurrence index
+            let index = str.indexOf(ch);
+            console.log(index);
+
+            // if character not found, return original string
+            if (index === -1) {
+                console.log(str);
+            }
+
+            // split the string
+            let firstPart = str.slice(0, index).split('').reverse().join('');
+            console.log(firstPart);
+            let reversePart = str.slice(index + 1).split('').join('');
+            console.log(str.slice(index + 1).split('').join(''));
+
+            // concatenate
+            document.getElementById("output").innerHTML = ch + firstPart + reversePart;
+            console.log(firstPart);
+            console.log(reversePart);
+        }
+
+        // console.log(reverseFromFirstChar(string, char));
+
+    </script>
+</body>
+</html>
