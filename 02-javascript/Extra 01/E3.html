@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB" crossorigin="anonymous">
+    <title>Exercise 03</title>
+</head>
+<body>
+    <div class="container mt-5">
+        <h3s style="text-align: justify;">
+            Take one input box to get string. Put 4 different div below it with text Q,A,Z, V inside it.
+            If user enter from q,w,e,r then change background color of Q box,
+            If user enter from a,s,d,f then change background color of A box,
+            If user enter from z,x,c,v then change background color of Z box,
+            If user enter any vowels letter then change background color of V box,
+            Display count in the box for how many times that box color changed.
+        </h3>
+        <div class="mt-5 mb-5 form">
+            <label>String </label><br>
+            <input type="text" id="str" placeholder="Enter Input String: "><br><br>
+            <input type="submit" onclick="check()">
+        </div>
+        <div class="d-flex justify-content-between mb-5">
+            <div class="card" id="cardq" style="height: 120px; width: 140px;">
+              <div class="card-header">
+                Box Q
+              </div>
+              <div class="card-body">
+                <p id="para1">(q, w, e, r)</p>
+              </div>
+            </div>
+
+            <div class="card" id="carda" style="height: 120px; width: 140px;">
+              <div class="card-header">
+                Box A
+              </div>
+              <div class="card-body">
+                <p id="para2">(a, s, d, f)</p>
+              </div>
+            </div>
+
+            <div class="card" id="cardz" style="height: 120px; width: 140px;">
+              <div class="card-header">
+                Box Z
+              </div>
+              <div class="card-body">
+                <p id="para3">(z, x, c, v)</p>
+              </div>
+            </div>
+
+            <div class="card" id="cardv" style="height: 120px; width: 140px;">
+              <div class="card-header">
+                Box V (vowels)
+              </div>
+              <div class="card-body">
+                <p id="para4">(a, e, i, o, u)</p>
+              </div>
+            </div>
+        </div>
+    <div>
+
+        <script>
+            let t1 = 0, t2 = 0, t3 = 0, t4 = 0;
+            function colorchange(id){
+              let box = document.getElementById(id);
+              box.style.background = getRandomColor();
+            }
+            function getRandomColor() {
+              return "#" + Math.floor(Math.random()*16777215).toString(16);
+            }
+            function check(){
+                let st = document.getElementById("str").value.toLowerCase();
+                console.log(st);
+                splt = st.split("");
+                console.log(splt);
+                leng = splt.length;
+                    if (splt[0] === "q") {
+                        colorchange("cardq");
+                        t1++;
+                        console.log("t1 " + t1);
+                    } else if (splt[0] === "a"){
+                        colorchange("carda");
+                        colorchange("cardv");
+                        t2++;
+                        t4++;
+                        console.log("t2 " + t2);
+                        console.log("t4 " + t4);
+                    } else if (splt[0] === "z"){
+                        colorchange("cardz");
+                        t3++;
+                        console.log("t3 " + t3);
+                    } else if (splt[0] === "a" || splt[0] === "e" || splt[0] === "i" || splt[0] === "o" || splt[0] === "u"){
+                        console.log("It Work's Congratulation!");
+                        let data1 = document.getElementById("cardq");
+                        data1.classList.add("card-danger");
+                        colorchange("cardv");
+                        t4++;
+                        console.log("t4 " + t4);
+                    }
+                document.getElementById("para1").innerHTML = "Times Box Q Changed " + t1;
+                document.getElementById("para2").innerHTML = "Times Box A Changed " + t2;
+                document.getElementById("para3").innerHTML = "Times Box Z Changed " + t3;
+                document.getElementById("para4").innerHTML = "Times Box V Changed " + t4;
+            }
+        </script>
+</body>
+</html>
