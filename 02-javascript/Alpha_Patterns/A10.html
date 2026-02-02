@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AP-10</title>
+</head>
+<body>
+    <input type="number" id="inp" placeholder="Enter number: ">
+    <button onclick="func()">Solve</button>
+    <p id="output"></p>
+    <script>
+        function func(){
+            const n = parseInt(document.getElementById("inp").value); 
+            let x = 65;
+            for(let i = 1; i <= n; i++){
+                let str = "";
+                for(let j = 1; j <= i; j++){
+                    str += String.fromCharCode(x++)+" ";
+                }
+                console.log(str + " ");
+            }
+        }
+    </script>
+</body>
+</html>
