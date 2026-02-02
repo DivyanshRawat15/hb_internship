@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>NP4</title>
+</head>
+<body>
+    <input type="number" id="inp" placeholder="Enter Input Number">
+    <button onclick="func()">Solve</button>
+    <p id="output"></p>
+    <script>
+        function func(){
+            const n = parseInt(document.getElementById("inp").value);
+            for(let i=1; i<=n*2; i+=2){
+              let s = '';
+              for(let j=i; j<=n*2; j+=2){
+                s += j + " ";
+              }
+              for(let k =i-2; k>0; k-=2){
+                s += k + ' ';
+              }
+              console.log(s)
+            }
+        }
+    </script>
+</body>
+</html>

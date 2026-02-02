@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>NP7</title>
+</head>
+<body>
+    <input type="number" id="inp" placeholder="Enter Input Number">
+    <button onclick="func()">Solve</button>
+    <p id="output"></p>
+    <script>
+        function func(){
+            const n = document.getElementById("inp").value; 
+            let x = 1;
+            for(let i=1; i<=n; i++){
+              let str = "";
+              let strt = x;
+              let end = strt+i-1;
+              if(i>1 && i%2 ===1){
+                for(let k = end; k>=strt; k--){
+                  str += k + (k === strt ? "" : " ");
+                }
+              } else {
+                for(let k = strt; k <= end; k++){
+                  str += k + (k === end ? "" : " ");
+                }
+              }
+              console.log(str);
+              x = end + 1;
+            }
+        }
+    </script>
+</body>
+</html>

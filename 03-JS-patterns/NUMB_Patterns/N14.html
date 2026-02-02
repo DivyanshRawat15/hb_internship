@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>NP14</title>
+</head>
+<body>
+    <input type="number" id="inp" placeholder="Enter Input Number">
+    <button onclick="func()">Solve</button>
+    <p id="output"></p>
+    <script>
+        function func(){
+            const n = document.getElementById("inp").value; 
+            for(let i = 0; i<n; i++){
+              let str = "";
+              for(let s = 0; s< (n-i-1)*2; s++){
+                str+=" ";
+              }
+              for(let j = 0; j<=i; j++){
+                str += Math.pow(2, j) + " ";
+              }
+              for(let j = i-1; j>=0; j--){
+                str += Math.pow(2, j) + " ";
+              }
+              console.log(str);
+            }
+        }
+    </script>
+</body>
+</html>

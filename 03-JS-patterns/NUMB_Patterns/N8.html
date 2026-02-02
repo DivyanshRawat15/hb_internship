@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>NP8</title>
+</head>
+<body>
+    <input type="number" id="inp" placeholder="Enter Input Number">
+    <button onclick="func()">Solve</button>
+    <p id="output"></p>
+    <script>
+        function func(){
+            const n = document.getElementById("inp").value; 
+            for(let i = 0; i< n; i++){
+              let str = '';
+              for(let j = n-1; j > i; j--){
+                str += j + " ";
+              }
+              for(let l = 0; l<i; l++){
+                str += "    ";
+              }
+              for(let k = i+1; k<n; k++){
+                str += k + " ";
+              }
+              console.log(str + "\n");
+            }
+        }
+    </script>
+</body>
+</html>

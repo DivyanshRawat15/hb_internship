@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>NP6</title>
+</head>
+<body>
+    <input type="number" id="inp" placeholder="Enter Input Number">
+    <button onclick="func()">Solve</button>
+    <p id="output"></p>
+    <script>
+        function func(){
+            const n = document.getElementById("inp").value; 
+            let curr = 1;
+            for(let i=1; i<=n; i++){
+              let sn = curr;
+              let str = "";
+              if(i%2 !== 0){
+                for(let j = 0; j<i; j++){
+                  str += curr + " ";
+                  curr++;
+                }
+              } else {
+                let en = sn+i-1;
+                for(let j=0; j<i; j++){
+                  str += en - j + " ";
+                  curr++;
+                }
+              }
+              console.log(str);
+            }
+        }
+    </script>
+</body>
+</html>

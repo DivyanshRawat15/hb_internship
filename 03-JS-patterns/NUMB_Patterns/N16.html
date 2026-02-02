@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>NP16</title>
+</head>
+<body>
+    <input type="number" id="inp" placeholder="Enter Input Number">
+    <button onclick="func()">Solve</button>
+    <p id="output"></p>
+    <script>
+        function func(){
+            const n = document.getElementById("inp").value; 
+            let x = 2;
+            for(let i=1; i<=n; i++){
+              let str = "";
+              for(let j = 1; j<=i; j++){
+                while(!prime(x)){
+                  x++;
+                }
+                str += x + " ";
+                x++;
+              }
+              str += " ";
+              console.log(str);
+            }
+        }
+        function prime(x){
+            let y = 1;
+            for(let i=2; i<=(x/2); i++){
+                if(x % i == 0){
+                    y = 0;
+                    break;
+                }
+            }
+            return y;
+        }
+    </script>
+</body>
+</html>
