@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AP-12</title>
+</head>
+<body>
+    <input type="number" id="inp" placeholder="Enter number: ">
+    <button onclick="func()">Solve</button>
+    <p id="output"></p>
+    <script>
+        function func(){
+            const n = parseInt(document.getElementById("inp").value);
+            let numb = 65;
+            for (let i = 1; i <= n+1; i++) {
+                let str = '';
+                for (let j = 1; j <= i; j++) {
+                    str += String.fromCharCode(numb) + ' ';
+                    numb += 5;
+                }
+              console.log(str);
+               numb = 65+i;
+            }
+        }
+    </script>
+</body>
+</html>
