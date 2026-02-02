@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PascalPattern</title>
+</head>
+<body>
+    <input type="number" id="inp" placeholder="Enter Input Number">
+    <button onclick="func()">Solve</button>
+    <p id="output"></p>
+    <script>
+        function func(){
+            const n = document.getElementById("inp").value; 
+            for(let i = 0; i < n; i++){
+              let str = "";
+              for(let j = 0; j < n-i-1; j++){
+                str += " ";
+              }
+              var val = 1;
+              for(let k = 0; k <= i; k++){
+                str += val + " ";
+                val *= (i-k)/(k+1);
+              }
+              str += "  \n  ";
+              console.log(str);
+            }
+        }
+    </script>
+</body>
+</html>

@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>NP9</title>
+</head>
+<body>
+    <input type="number" id="inp" placeholder="Enter Input Number">
+    <button onclick="func()">Solve</button>
+    <p id="output"></p>
+    <script>
+        function func(){
+            const n = document.getElementById("inp").value; 
+            for(let i = n; i >= 0; i--){
+              let str = "";
+              for(let j=1; j<=i; j++){
+                str += j;
+              }
+              let gap = 2*(n-i);
+              str += " ".repeat(gap);
+              for(let k=i; k>=1; k--){
+                str += k;
+              }
+              str += " ";
+              console.log(str);
+            }
+        }
+    </script>
+</body>
+</html>

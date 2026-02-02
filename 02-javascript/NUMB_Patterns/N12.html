@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>NP12</title>
+</head>
+<body>
+    <input type="number" id="inp" placeholder="Enter Input Number">
+    <button onclick="func()">Solve</button>
+    <p id="output"></p>
+    <script>
+        function func(){
+            const x = document.getElementById("inp").value; 
+            for (let i = 0; i <= x; i++) {
+                let str = '';
+                for (let j = 1; j <= i; j++) {
+                    str += i + ' ';
+                }
+                console.log(str);
+            }
+            for(let i=x-1; i>0; i--){
+              let stre = '';
+              for(let j=1; j<=i; j++){
+                stre += i + " ";
+              }
+              console.log(stre);
+            }
+        }
+    </script>
+</body>
+</html>
