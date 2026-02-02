@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>D5JS3</title>
+</head>
+<body>
+    <h1>Search in a Rotated Array</h1>
+    <p>The task is to find the index of the given element key in the array.</p>
+
+    <label>Enter Array:</label><br>
+    <input type="text" id="arrayInput"><br><br>
+    <label>Enter the Key (Array Element):</label><br>
+    <input type="number" id="key"><br><br>
+
+    <button onclick="func()">Click</button>
+    <p id="output"></p>
+
+    <script>
+        function func(){
+            let arr = document.getElementById("arrayInput").value;
+            let key = Number(document.getElementById("key").value);
+            let arrinp = arr.split(", ");
+            console.log(arrinp);
+            const arrobj = arrinp.reduce((obj, item, index) => {obj[item] = index;
+                return obj;
+            }, {});
+            // arrinp.forEach((item, index) => {
+            //     arrobj[item] = index;});
+            console.log(arrobj[key]);
+            
+
+            document.getElementById("output").innerHTML = arrobj[key];
+        }
+    </script>
+</body>
+</html>

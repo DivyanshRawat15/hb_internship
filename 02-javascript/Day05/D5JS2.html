@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>D5JS2</title>
+</head>
+<body>
+    <h1>Merge Without Extra Space</h1>
+    <p>
+        Take 2 arrays. Merge them in sorted order without using any extra space.
+        Modify arr1 so that it contains the first N elements and modify arr2 so that it contains the last M elements.
+    </p>
+    <label>Array 1:</label><br>
+    <input type="text" id="arrayInput1"><br><br>
+    <label>Array 2:</label><br>
+    <input type="text" id="arrayInput2"><br><br>
+
+    <button onclick="func()">Click</button>
+    <p id="output1"></p>
+    <p id="output2"></p>
+
+    <script>
+        function func(){
+            let arrInpA = document.getElementById("arrayInput1").value;
+            let arrInpB = document.getElementById("arrayInput2").value;
+            let total = [];
+            let farr1 = [];
+            let farr2 = [];
+            let arrA = arrInpA.split(" ").map(Number);
+            let arrB = arrInpB.split(" ").map(Number);
+            console.log(arrB.length);
+            console.log(arrA);
+            let lenA = arrA.length;
+            let lenB = arrB.length;
+            total = arrA.concat(arrB);
+            total.sort((a,b) => a-b);
+            console.log(total);
+            for (let i = 0; i<total.length; i++){
+                if (i<=arrA.length-1){
+                    farr1.push(total[i]);
+                } else {
+                    farr2.push(total[i]);
+                }
+            }
+            document.getElementById("output1").innerHTML = "arr1[] = " +"["+ farr1.join(" ") + "]";
+            document.getElementById("output2").innerHTML = "arr2[] = " +"["+ farr2.join(" ") + "]";
+            console.log(farr1);
+            console.log(farr2);
+        }
+    </script>
+</body>
+</html>

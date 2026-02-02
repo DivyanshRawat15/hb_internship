@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>D5JS1</title>
+</head>
+<body>
+    <h1>Largest Number formed from an Array</h1>
+    <p>
+        Given a list of non-negative integers, arrange them in such a manner that they form the largest number possible.
+        The result is going to be very large, hence return the result in the form of a string.
+    </p>
+    <label>Enter Array</label><br>
+    <input type="text" id="arr"><br><br>
+    <button onclick="func()">Click</button>
+    <p id="output"></p>
+
+    <script>
+        function compare(s1, s2){
+                return (s1+s2)>(s2+s1);
+            }
+        function func(){
+            let arr = document.getElementById("arr").value;
+            let numbers = arr.split(",").map(String);
+            console.log(numbers);
+            numbers.sort((s1, s2) => compare(s1, s2) ? -1 : 1);
+            if (numbers[0] === "0"){
+                document.getElementById("output").innerHTML = "There are 0 elements in the array " + numbers;
+            }
+            document.getElementById("output").innerHTML = numbers.join('');
+            
+            console.log(numbers);
+        }
+    </script>
+</body>
+</html>
