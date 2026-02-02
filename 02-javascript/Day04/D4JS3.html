@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>D4JS03</title>
+</head>
+<body>
+    <h1>Coin Change</h1>
+    <p> Given an integer array coins[ ] of size N representing different denominations of currency and an integer sum,
+        find the number of ways you can make sum by using different combinations from coins[ ].</p>
+    <p> Note: Assume that you have an infinite supply of each type of coin.</p>
+
+    <label>Sum:</label><br>
+    <input type="number" id="sum" placeholder="Enter the Sum"><br><br>
+    <label>Types of Coins: </label><br>
+    <input type="text" id="coins" placeholder="Enter Coins"><br><br>
+    <button onclick="func()">Click</button>
+    <p id="output"></p>
+
+    <script>
+        function func(){
+            let sum = Number(document.getElementById("sum").value);
+            let coins = document.getElementById("coins").value.split(",").map(Number);
+            let dp = new Array(sum + 1).fill(0);
+            console.log(dp);
+            dp[0] = 1;
+            for(let coin of coins){console.log(coin);
+                for(let i=coin; i<= sum; i++){console.log(i);
+                    dp[i] += dp[i-coin]; console.log(dp[i]);
+                }
+            }
+            document.getElementById("output").innerHTML = dp[sum];
+        }
+    </script>
+</body>
+</html>

@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>D4JS01</title>
+</head>
+<body>
+    <h1>Minimize the sum of the product</h1>
+    <p>
+        You are given two arrays, A and B, of equal size N. 
+        The task is to find the minimum value of A[0] * B[0] + A[1] * B[1] + .... + A[N-1] * B[N-1], where shuffling of elements of arrays A and B is allowed.</p>
+
+    <label>Enter Array (comma separated):</label><br>
+    <input type="text" id="arrayInputA" placeholder="Enter Array A"><br><br>    
+    <label>Enter Array (comma separated):</label><br>
+    <input type="text" id="arrayInputB" placeholder="Enter Array B"><br><br> 
+    <button onclick="func()">Click</button>
+    <p id="output"></p>
+
+    <script>
+        function func(){
+            let total = 0;
+            let arrInpA = document.getElementById("arrayInputA").value;
+            let arrInpB = document.getElementById("arrayInputB").value;
+            let arrA = arrInpA.split(",");
+            let arrB = arrInpB.split(",");
+            let lenA = arrA.length;
+            let lenB = arrB.length;
+            /* console.log(lenA);
+            console.log(lenB); */
+            if (lenA !== lenB){
+                document.getElementById("output").innerHTML = "The Array's have different length's!";
+                return;
+            }
+            arrA.sort((a,b) => a-b);
+            arrB.sort((a,b) => b-a);
+            for(let i = 0; i < lenA; i++){
+                total += arrA[i]*arrB[i];
+                console.log(total);
+            }
+            document.getElementById("output").innerHTML = "Minimum Sum is " + total;
+        }
+    </script>
+</body>
+</html>

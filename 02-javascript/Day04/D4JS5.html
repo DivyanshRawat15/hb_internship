@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>D4JS05</title>
+</head>
+<body>
+    <h1>How many maximum different toys you can buy?</h1>
+    <p>Define one array & amount.</p>
+
+    <label>Enter Array A (comma separated):</label><br>
+    <input type="text" id="arrayInput" placeholder="Enter Array"><br><br>
+
+    <label>Enter Amount:</label><br>
+    <input type="number" id="amt"><br><br>
+    <button onclick="func()">Click</button>
+    <p id="output"></p>
+    <p id="array1"></p>
+    
+    <script>
+        function func(){
+            let arrInput = document.getElementById("arrayInput").value;
+            let amount = Number(document.getElementById("amt").value);
+            let stck = [];
+            let money = 0;
+            let arr = arrInput.split(",").map(Number);
+            arr.sort((a,b) => a-b);
+            console.log(arr);
+            for (let i=0; i<arr.length; i++){
+                if(money + arr[i] <= amount){
+                   money += arr[i];console.log(money);
+                   stck.push(arr[i]);console.log(stck);                  
+                } else {
+                    break;
+                }
+            }
+            document.getElementById("output").innerHTML = stck.length;
+            document.getElementById("array1").innerHTML = "Cost of toys you can buy are " + stck.join(", ") + ".";
+        }
+    </script>
+</body>
+</html>

@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>D4JS2</title>
+</head>
+
+<body>
+
+    <h1>Find all pairs with a given sum</h1>
+
+    <label>Enter Array A (comma separated):</label><br>
+    <input type="text" id="arrayInputA" placeholder="1,2,4,5,7"><br><br>
+
+    <label>Enter Array B (comma separated):</label><br>
+    <input type="text" id="arrayInputB" placeholder="5,6,3,4,8"><br><br>
+
+    <label>Enter Sum X:</label><br>
+    <input type="number" id="sumX" placeholder="9"><br><br>
+
+    <button onclick="func()">Click</button>
+
+    <p id="output"></p>
+
+    <script>
+        function func() {
+
+            let arrInpA = document.getElementById("arrayInputA").value;
+            let arrInpB = document.getElementById("arrayInputB").value;
+            let X = Number(document.getElementById("sumX").value);
+
+            let arrA = arrInpA.split(",").map(Number);
+            let arrB = arrInpB.split(",").map(Number);
+
+            let setB = new Set(arrB);
+            let result = [];
+
+            for (let i = 0; i < arrA.length; i++) {
+                let needed = X - arrA[i];
+
+                if (setB.has(needed)) {
+                    result.push(`(${arrA[i]}, ${needed})`);
+                }
+            }
+
+            if (result.length === 0) {
+                document.getElementById("output").innerHTML =
+                    "No pairs found";
+            } else {
+                document.getElementById("output").innerHTML =
+                    result.join("<br>");
+            }
+        }
+    </script>
+
+</body>
+</html>

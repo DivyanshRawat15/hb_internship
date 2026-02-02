@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>D4JS06</title>
+</head>
+<body>
+    <h1>Reverse words in a given string</h1>
+    <p>
+        Given a String S, reverse the string without reversing its individual words. Words are separated by dots.
+    </p>
+
+    <input type = "text" id="txtbox" placeholder="Enter the string with '.' in between of every word">
+    <br><br>
+        <button onclick="func()">Click</button>
+        <p id="output"></p>
+        <p id="final"></p>
+
+        <script>
+            function func(){
+                let str = document.getElementById("txtbox").value;
+                console.log(str);
+                let rev = str.split(".").reverse().join(".");
+                console.log(rev);
+                document.getElementById("output").innerHTML = "Current String = " + str;
+                document.getElementById("final").innerHTML = "Reversed String = " + rev;
+            }
+        </script>
+</body>
+</html>

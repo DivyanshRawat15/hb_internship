@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>D4JS04</title>
+</head>
+<body>
+    <h1>K-th element of two sorted Arrays</h1>
+    <p>
+        Sort two arrays. The task is to find the element that would be at the kth position of the final sorted array.</p>
+
+    <label>Enter Array (comma separated):</label><br>
+    <input type="text" id="arrayInputA" placeholder="Enter Array A"><br><br>    
+    <label>Enter Array (comma separated):</label><br>
+    <input type="text" id="arrayInputB" placeholder="Enter Array B"><br><br> 
+    <label>Enter K (index Position)</label><br>
+    <input type="number" id="idx" placeholder="Enter the Index">
+    <button onclick="func()">Click</button>
+    <p id="arra"></p>
+    <p id="output"></p>
+
+    <script>
+        function func(){
+            let total = 0;
+            let arrInpA = document.getElementById("arrayInputA").value;
+            let arrInpB = document.getElementById("arrayInputB").value;
+            let rearr = [];
+            let k = document.getElementById("idx").value;
+            console.log(k);
+            let arrA = arrInpA.split(",");
+            let arrB = arrInpB.split(",");
+            let lenA = arrA.length;
+            let lenB = arrB.length;
+            rearr = arrA.concat(arrB);
+            rearr.sort((a,b) => a-b);
+            console.log(rearr);
+            /* arrA.sort((a,b) => a-b);
+            arrB.sort((a,b) => b-a); */
+            document.getElementById("arra").innerHTML = "Sorted Array is [" + rearr + "]";
+            document.getElementById("output").innerHTML = "Element at "+ k + "th index is " + rearr[k];
+        }
+    </script>
+</body>
+</html>
