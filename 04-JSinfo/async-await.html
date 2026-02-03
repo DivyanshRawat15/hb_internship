@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Async/Await Example</title>
+</head>
+<body>
+    <h3>Async/Await Program</h3>
+    <script>
+        async function delayedMessage() {
+            let promise = new Promise ((resolve) => {
+                setTimeout(() => resolve("Message after 2 seconds!"), 2000);
+            });
+            let result = await promise;
+            console.log(result);
+        }
+        delayedMessage();
+        console.log("This runs immediately, without waiting for the message.");
+    </script>
+</body>
+</html>

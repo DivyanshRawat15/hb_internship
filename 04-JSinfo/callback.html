@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Callback Example</title>
+</head>
+<body>
+    <h1>Callback Function</h1>
+    <p>
+        The callback function in JavaScript is regularly passed as an argument of another function.
+        Dont consider the callback as a name or keyword here.The callback function name can be any valid identifier.
+    </p>
+   <div id = "output"> </div>
+   <script>
+      let output = document.getElementById('output');
+      function multiply(a){
+        let m = a * 4;
+        console.log(a);
+        output.innerHTML = "Result: " + m + "<br>";
+      }
+      function sum(a, b, callback){
+        let c = a+b;
+        console.log(c);
+        callback(c);
+      }
+      sum(4, 8, multiply);
+   </script>
+</body>
+</html>
