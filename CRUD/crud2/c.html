@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- // Program link : https://www.agirlcodes.dev/todo-app-frontend-crud-vanilla-js-fetch-api; -->
+    <title>CRUD 02 [TO-DO LIST]</title>
+    <link rel="stylesheet" href="s.css">
+</head>
+<body>
+    <div>
+
+    </div>
+
+    <script>
+        const localhostAdd = "http://localhost:3000/todos";
+        const newTodoInput = document.querySelector("#new-todo input");
+        let submitButton = document.querySelector("#submit");
+        let isEditingTask = false;
+        let editButtonTodoID = " ";
+
+        async function getTodos(){
+            try {
+                const response = await fetch(localhostAdd);
+                const responseData = await response.json();
+                console.log('result', responseData);
+                return responseData.data;
+            } catch (error) {
+                console.error("Error:", error);
+            }
+        }
+        getTodos();
+
+        async function createTodo(data){
+            try{
+                const response = await fetch(localhostAdd, {
+                    method: "POST",
+                    headers: {
+                        "Constent-Type": "application/json",
+                    },
+                    body: JSON.stringify(data),
+                });
+                const result = await response.json();
+                console.log("Success:", result.message);
+            } catch (error) {
+                console.error("Error:", error);
+            }
+        }
+
+        async function deleteTodo(TodoID){
+            try{
+                const response = await fetch(`${localhostAdd}/${TodoID}`, {
+                    method: "DELETE",
+                });
+                const result = await response.json();
+                console.log("Success:", result.message);
+            } catch (error){
+                console.error("Error:", error);
+            }
+        }
+
+        async function updateTodo(id, data){
+            try{
+                const response = await fetch(`${localhostAdd}/${id}`, {
+                    method: "PUT",
+                    headers: {
+                        "Content-Type": "application/json",
+                    },
+                    body: JSON.stringify(data),
+                });
+                const result = await response.json();
+                console.log("Success:", result.message);
+            } catch (error) {
+                console.error("Error:", error);
+            }
+        }
+
+        async function editTask(){
+            const data = {title: newTodoInput, completed: false};
+            if(isEditingTask) await updateTodo(editButtonTodoID, data);
+            displayTodos();
+            newTodoInput.value = "";
+            isEditingTask = false;
+            submitButton.innerHTML = "Add";
+        }
+
+        async function addTask(){
+            const data = {title: newTodoInput.value};
+            await createTodo(data);
+            displayTodos();
+            newTodoInput.value = "";
+        }
+
+        async function displayTodos(){
+            const todoList = await getTodos();
+            <button data-id={todo.id} class="delete"></button>
+            let todoListContainer = document.querySelector("#todos");
+            if(todoList.length == 0){
+                todoListContainer.innerHTML += `
+                    <div class="todo">
+                        <span> You do not have any tasks </span>
+                    </div>`;
+            } else {
+                todoList.forEach((todo) => {
+                    todoListContainer.innerHTML += `
+                    <div class="todo">
+                        <span
+                            id='todoname'
+                            style="text-decoration:}{todo.completed! 'line-through' : ''}"
+                            data-iscomplete = "${todo.complete}"
+                            data-id="${todo.id}>
+                            ${todo.title}
+                        </span>
+                        <div class="actions">
+                            <button class="edit"><i class="fas fa-edit"></i></button>
+                            <button class="delete"><i class="far fa-trash-alt"></i></button>
+                        </div>
+                    </div>`;
+                });
+            }
+            deleteTaskButton();
+            editTaskTitleButton();
+        }
+        displayTodos();
+        
+        function deleteTaskButton() {
+            const deleteTodoButtons = document.querySelectorAll(".delete");
+            for(const deleteButton of deleteTodoButtons) {
+                deleteButton.onclick = async function() {
+                    const todoID = deleteButton.getAttibute("data-id");
+                    await deleteTodo(todoID);
+                    displayTodos();
+                };
+            }
+        }
+
+        function editTaskTitleButton() {
+            const editTodoTitleButtons = document.querySelectorAll(".edit");
+            for(const editButton of editTodoTitleButtons){
+                const todoName = editButton.parentNode.parentNode.children[0];
+                editButton.onclick = async function() {
+                    newTodoInput.value = todoName.innerText;
+                    submitButton.innerHTML = "Edit";
+                    isEditingTask = true;
+                    editButtonTodoID = editButton.getAttribute("data-id");
+                };
+            }
+        }
+
+        submitButton.addEventListener("click", () => isEditingTask ? editTask() : addTask());
+    </script>
+</body>
+</html>
