@@ -1,0 +1,13 @@
+body{
+  padding: 25px;
+  color: Blue;
+  background-color: lightgrey;
+}
+.title {
+	color: #5C6AC4;
+}
+button{
+  color: Yellow;
+  background-color: black;
+  border-block-color: red;
+}
