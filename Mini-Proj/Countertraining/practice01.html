@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Counter Practice</title>
+</head>
+<body>
+    <h2>Counter Structure</h2>
+    <button onclick="incbtn()">[Positive]</button>
+    <button onclick="decbtn()">[Negative]</button>
+    <button onclick="resetbtn()">Reset</button>
+    <button onclick="savebtn()">Save</button>
+    <button onclick="loadbtn()">Load</button>
+
+    <p id="results">0</p>
+    <script>
+        let counter = 0;
+        function updateCount(){
+            document.getElementById("results").innerHTML = "Counter: " + counter;
+        }
+        function incbtn(){
+            counter++;
+            updateCount();
+        }
+        function decbtn() {
+            counter--;
+            updateCount();
+        }
+        function resetbtn() {
+            counter = 0;
+            updateCount();
+        }
+        function savebtn() {
+            localStorage.setItem("counterValue", counter);
+        }
+        function loadbtn() {
+            let savedCounter = localStorage.getItem("counterValue");
+            if(savedCounter !== null) {
+                counter = parseInt(savedCounter);
+                updateCount();
+            }
+        }
+    </script>
+</body>
+</html>
