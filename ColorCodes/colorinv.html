@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Color Inversion Example</title>
+    <style>
+        body.inverted {
+            filter: invert(1);
+            transition: filter 0.5s ease;
+        }
+        body {
+            background-color: grey;
+            color: lightgrey;
+            transition: background-color 0.5s, color 0.5s;
+        }
+        .content-box {
+            padding: 20px;
+            border: 1px solid blue;
+            margin-top: 20px;
+            background-color: #f0f0f0;
+            color: orangered;
+        }
+        button {
+            border: 1px solid red;
+            color: red;
+        }
+    </style>
+</head>
+<body>
+    <h1> Color Inversion Example </h1>
+    <p> Click Button below to toggle color inversion!! </p>
+    <button id="toggle-button">Inversion!!</button>
+    <div class="content-box">
+        It's a content box. It's color would also invert when button is clicked. TRY IT!!
+    </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const toggleButton = document.getElementById('toggle-button');
+            const bodyElement = document.body;
+
+            toggleButton.addEventListener('click', () => {
+                bodyElement.classList.toggle('inverted');
+            });
+        });
+    </script>
+</body>
+</html>
