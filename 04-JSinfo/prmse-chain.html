@@ -1,0 +1,31 @@
+<html>
+<body>
+   <div id = "output"> </div>
+   <script>
+      let output = document.getElementById("output");
+      var data;
+      // First promise
+      let promise1 = new Promise((resolve, reject) => {
+         setTimeout(() => {
+            resolve(10);
+         }, 1000);
+      });
+      promise1.then((value) => {
+         data = value; // Stroing value into the data
+         output.innerHTML += "The promise1 is resolved and data is: " + data + "<br>";
+      });
+
+      // Second promise
+      let promise2 = new Promise((resolve, reject) => {
+         setTimeout(() => {
+            resolve(20);
+         }, 2000);
+      });
+      promise2.then((value) => {
+         data = data * value; // Using the data from the first promise
+         output.innerHTML += "The promise2 is resolved and data is: " + value + "<br>";
+         output.innerHTML += "The final value of the data is: " + data + "<br>";
+      });
+   </script>
+</body>
+</html>
