@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>JS 18</title>
+</head>
+<body>
+    
+    <h1>
+        Create a user defined sort function which sort the given array and display in the alert.
+    </h1>
+<p> Array is : [99, 10, 9, 45, 89, 81, 74, 36]</p>
+<button onclick="sorting()">SORT IT!</button>
+<p id="result"></p>
+
+<script>
+    function sorting(){
+        var js_array = [99, 10, 9, 45, 89, 81, 74, 36];
+        // user-defined compare function for numeric sort
+        function compareNumbers(a, b){
+            return a - b; // ascending order
+        }
+        var sorted = js_array.slice().sort(compareNumbers);
+        alert('Sorted array: ' + sorted.join(', '));
+        document.getElementById('result').textContent = 'Sorted: ' + sorted.join(', ');
+    }
+</script>
+</body>
+</html>
