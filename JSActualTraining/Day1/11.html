@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>JS 11</title>
+</head>
+<body>
+
+<h1>Find the position of an element in the array. (without using any method).Cases:(i) If it is present, then return the index of that element.
+(ii) If it is not present, then return -1.
+(iii) If it is present more than 1 time, then return 2.</h1>
+
+<label>Enter Array (comma separated):</label><br>
+<input type="text" id="arrayInput" placeholder="1,5,6,8,9,8"><br><br>
+
+<label>Enter Element to Search:</label><br>
+<input type="number" id="elementInput"><br><br>
+
+<button onclick="func()">Find</button>
+
+<p id="result"></p>
+
+<script>
+    function func() {
+        var arrInput = document.getElementById("arrayInput").value;
+        var element = Number(document.getElementById("elementInput").value);
+
+        var arr = arrInput.split(",");
+        var count = 0;
+        var index = -1;
+
+        for (var i = 0; i < arr.length; i++) {
+            if (Number(arr[i]) === element) {
+                count++;
+                if (index === -1) {
+                    index = i;
+                }
+            }
+        }
+
+        if (count === 0) {
+            document.getElementById("result").innerHTML = "Output: -1";
+        } else if (count > 1) {
+            document.getElementById("result").innerHTML = "Output: 2";
+        } else {
+            document.getElementById("result").innerHTML = "Output: " + index;
+        }
+    }
+</script>
+
+</body>
+</html>
+
+

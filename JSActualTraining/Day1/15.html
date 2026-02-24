@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>JS 15</title>
+</head>
+<body>
+    
+    <h1>
+        Generate a random number between 0 and 10 using Math.random and check
+        if it is divisible by 4, 3, or 7.
+    </h1>
+
+<button onclick="Find()">Find ?</button>
+<p id="result"></p>
+
+<script>
+    function Find(){
+        // create random integer 0–10
+        var num = Math.floor(Math.random() * 11);
+        var r = [];
+        if(num % 4 === 0) r.push('4');
+        if(num % 3 === 0) r.push('3');
+        if(num % 7 === 0) r.push('7');
+        var msg = 'Random number: ' + num + '\n';
+        if(r.length > 0) {
+            msg += 'Divisible by: ' + r.join(', ');
+        } else {
+            msg += 'Not divisible by 4, 3, or 7';
+        }
+        // show alert and display on page
+        alert(msg);
+        document.getElementById('result').textContent = msg.replace(/\n/g,' | ');
+    }
+</script>
+</body>
+</html>

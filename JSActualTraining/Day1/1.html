@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>JS 1</title>
+</head>
+<body>
+    <h1>Write a program to accept a number from the user and check if it is even or odd. Alert the result (Number is even / Number is odd).</h1>
+    <p>Click the button to start the program!</p>
+    <button onclick="myFunction()">Click Here!</button>
+    <p id="ans"> </p>
+<script>
+function myFunction() {
+  const numb = prompt("Please enter your number");
+  if( numb % 2 == 0 ){
+    alert("Number is EVEN")
+  	document.getElementById("ans").innerHTML ="EVEN!";
+  }
+  else{
+    alert("Number is ODD")
+  document.getElementById("ans").innerHTML ="ODD!";
+  }
+}
+</script>
+</body>
+</html>

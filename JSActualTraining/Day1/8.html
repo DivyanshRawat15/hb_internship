@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>JS 8</title>
+</head>
+<body>
+    <h1>Write a program that prints the reverse of a given string (not using any method).</h1>
+    <button onclick="reverseStringManually()">Get Output</button>
+    <p id="input"></p>
+    <p id="output"></p>
+    
+    <script>
+        function reverseStringManually(str = "Hello!") {
+            let reversedStr = "";
+            for (let i = str.length - 1; i >= 0; i--) {
+                reversedStr += str[i];
+            }
+            document.getElementById("input").innerHTML = "Given String = " + str;
+            document.getElementById("output").innerHTML = reversedStr;
+        }
+    </script>
+</body>
+</html>

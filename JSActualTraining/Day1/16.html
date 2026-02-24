@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>JS 16</title>
+</head>
+<body>
+    
+    <h1>
+        Find which day is the current day using the switch-case control
+    </h1>
+
+<button onclick="checkDay()">Check Day</button>
+<p id="result"></p>
+
+<script>
+    function checkDay(){
+        var dayNum = new Date().getDay(); 
+        var dayName;
+        switch(dayNum){
+            case 0:
+                dayName = 'Sunday';
+                break;
+            case 1:
+                dayName = 'Monday';
+                break;
+            case 2:
+                dayName = 'Tuesday';
+                break;
+            case 3:
+                dayName = 'Wednesday';
+                break;
+            case 4:
+                dayName = 'Thursday';
+                break;
+            case 5:
+                dayName = 'Friday';
+                break;
+            case 6:
+                dayName = 'Saturday';
+                break;
+            default:
+                dayName = 'Unknown';
+        }
+        alert('Today is ' + dayName);
+        document.getElementById('result').textContent = 'Day number: ' + dayNum + ' (' + dayName + ')';
+    }
+</script>
+</body>
+</html>

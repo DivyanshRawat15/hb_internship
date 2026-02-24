@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>JS 5</title>
+</head>
+<body>
+    <h1>Write a program that accepts a number and prints all the even and odd numbers separately up to that number in a loop</h1>
+    <button onclick="func()">Click Me!</button>
+
+    <p id="even">Even Numbers: </p>
+    <p id="odd">Odd Numbers: </p>
+    <script>
+        function func(){
+            let x = parseInt(prompt("Enter NUMBER: "));
+            let i=0;
+            let z = "";
+            let y = "";
+            for(i; i<=x; i++){
+                if (i%2 == 0){
+                    z += i+", ";                    
+                }
+                else{
+                    y += i+", ";
+                } 
+            }
+            document.getElementById("even").innerHTML = z;
+            document.getElementById("odd").innerHTML = y;
+        }
+    </script>
+</body>
+</html>

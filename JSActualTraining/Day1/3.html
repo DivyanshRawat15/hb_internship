@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>JS 3</title>
+</head>
+<body>
+    <h1>Write a program to accept N number subject marks individually. All Subject marks can be out of 100.(a)Print Total Marks Achieved.(b)Print Percentage.</h1>
+    <button onclick="func()">Click Me!</button>
+    <p id="total"> </p>
+    <p id="per"> </p>
+<script>
+    function func(){
+        let x = prompt("Enter Number of Subjects: ");
+        let total = 0;
+        let i = 1;
+        let y = 0;
+        while (i<=x){
+            y = parseInt(prompt("Enter Marks for Subject" + i ));
+            total += y;
+            i++;
+        }
+        document.getElementById("total").innerHTML = total + " / " + (100*x);
+        document.getElementById("per").innerHTML = (total/(100*x)) * 100 + " %";
+
+    }
+</script>
+</body>
+</html>

@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>JS 7</title>
+</head>
+<body>
+    <h1>Write a program that prints the factorial of the given user input.</h1>
+    <button onclick="func()">Click Me!</button>
+    <p id="fact"> </p>
+    <script>
+        function func(){
+            let x = parseInt(prompt("Enter Number: "));
+            let total ="";
+            let i = 1;
+            let y = 1;
+            for (i;i<=x;i++){
+                y *= i;
+                total += i + "* ";
+            }
+            document.getElementById("fact").innerHTML = total + " = " + y;
+
+        }
+    </script>
+</body>
+</html>

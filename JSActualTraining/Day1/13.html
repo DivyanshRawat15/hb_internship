@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>JS 13</title>
+</head>
+<body>
+    
+    <h1>
+        Create a javascript for finding the even numbers from a given array
+    </h1>
+    <p>var js_array = new Array[5, 10, 9, 45, 89, 81, 74, 36]</p>
+
+<button onclick="leaders()">Search</button>
+<p id="result"></p>
+
+<script>
+    function leaders(){
+        
+        var js_array = [5, 10, 9, 45, 89, 81, 74, 36];
+        
+        var evens = js_array.filter(function(n) {
+            return n % 2 === 0;
+        });
+        document.getElementById('result').textContent =
+            'Even numbers: ' + evens.join(', ');
+    }
+</script>
+</body>
+</html>

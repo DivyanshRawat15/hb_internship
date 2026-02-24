@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>JS 17</title>
+</head>
+<body>
+    
+    <h1>
+        Accept a number from the user via prompt and convert it to words.
+	    The number must be between 21 and 100; if not, the user will be re‑prompted.
+	    Examples: 25 → "Twenty five", 36 → "Thirty six".
+    </h1>
+
+<button onclick="askNumber()">Convert</button>
+<p id="result"></p>
+
+<script>
+    function numberToWords(n){
+        var ones = ['','one','two','three','four','five','six','seven','eight','nine'];
+        var teens = ['ten','eleven','twelve','thirteen','fourteen','fifteen','sixteen','seventeen','eighteen','nineteen'];
+        var tens = ['','','twenty','thirty','forty','fifty','sixty','seventy','eighty','ninety'];
+        if(n === 100) return 'one hundred';
+        if(n < 10) return ones[n];
+        if(n < 20) return teens[n-10];
+        var t = Math.floor(n/10);
+        var o = n % 10;
+        return tens[t] + (o ? ' ' + ones[o] : '');
+    }
+
+    function askNumber(){
+        var num;
+        do{
+            var input = prompt('Enter a number between 21 and 100:');
+            if(input === null) return; // cancelled
+            num = parseInt(input,10);
+        } while(isNaN(num) || num < 21 || num > 100);
+        var words = numberToWords(num);
+        alert(num + ' = ' + words);
+        document.getElementById('result').textContent = num + ' = ' + words;
+    }
+</script>
+</body>
+</html>

@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>JS 14</title>
+</head>
+<body>
+    
+    <h1>
+        Give an alert message using, If the time on your browser is less than 10,
+        you will get a "Good morning" greeting. Otherwise you will get a "Good day" greeting.
+    </h1>
+
+<button onclick="checkTime()">Check Time</button>
+<p id="result"></p>
+
+<script>
+    function checkTime(){
+        var hour = new Date().getHours();
+        if(hour < 10){
+            alert('Good morning');
+        } else if(hour < 18){
+            alert('Good day');
+        } else {
+            alert('GoodBye')
+        }
+        document.getElementById('result').textContent = 'Current hour: ' + hour;
+    }
+</script>
+</body>
+</html>
