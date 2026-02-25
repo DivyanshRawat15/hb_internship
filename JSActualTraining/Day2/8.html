@@ -1,0 +1,26 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Day2 JS 8</title>
+</head>
+<body>
+    <h1>Age Calculation via Prompt</h1>
+    <p>
+        The Task: Calculate your age based on user input taken through a prompt box
+        (e.g., prompt for birth year or date of birth).
+    </p>
+    <button onclick="calculate()">Calculate</button>
+    <p id="result">  </p>    
+<script>
+    function calculate(){
+        let x = prompt("Enter Your DOB Year: ");
+        let y = new Date();
+        let age = y.getFullYear() - x;
+        document.getElementById('result').innerHTML = `You are ${age} years old.`;
+    }
+</script>
+</body>
+</html>

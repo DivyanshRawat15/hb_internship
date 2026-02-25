@@ -1,0 +1,77 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Day2 JS 9</title>
+</head>
+<body>
+    <h1>Console-Based Digital Clock & Lap Timer</h1>
+    <p>
+        <b>Goal:</b> Build a high-precision digital clock and lap-tracking system that exists entirely within the Browser Console.
+    </p>
+    <p>
+        <b>Concepts:</b> Recursive setTimeout, confirm().
+        <ul>Requirements:
+        <li>Utilize a recursive setTimeout pattern (not setInterval) to ensure synchronization with system time and prevent callback stacking.</li>
+        <li>Leverage the browser's confirm() dialog to act as a physical "Lap Button" trigger for handling user input and tracking lap times.</li></ul>
+
+    </p>
+    <button id="startBtn">Start Clock</button>
+    <button id="lapBtn" disabled>Lap</button>
+    <button id="stopBtn" disabled>Stop Clock</button>
+    <p id="status"></p>
+<script>
+    let clockTimer;
+    let running = false;
+    const laps = [];
+
+    function logTime() {
+        const now = new Date();
+        const hh = String(now.getHours()).padStart(2,'0');
+        const mm = String(now.getMinutes()).padStart(2,'0');
+        const ss = String(now.getSeconds()).padStart(2,'0');
+        const ms = String(now.getMilliseconds()).padStart(3,'0');
+        console.log(`Time: ${hh}:${mm}:${ss}.${ms}`); 
+        const delay = 1000 - now.getMilliseconds();
+        clockTimer = setTimeout(logTime, delay);
+    }
+
+    function startClock() {
+        if (running) return;
+        running = true;
+        document.getElementById('status').textContent = 'Clock running...';
+        document.getElementById('lapBtn').disabled = false;
+        document.getElementById('stopBtn').disabled = false;
+        logTime();
+    }
+
+    function stopClock() {
+        clearTimeout(clockTimer);
+        running = false;
+        document.getElementById('status').textContent = 'Clock stopped.';
+        document.getElementById('lapBtn').disabled = true;
+        document.getElementById('stopBtn').disabled = true;
+    }
+
+    function recordLap() {
+        if (!running) return;
+        if (confirm('Record lap at current console time?')) {
+            const now = new Date();
+            const hh = String(now.getHours()).padStart(2,'0');
+            const mm = String(now.getMinutes()).padStart(2,'0');
+            const ss = String(now.getSeconds()).padStart(2,'0');
+            const ms = String(now.getMilliseconds()).padStart(3,'0');
+            const timeStr = `${hh}:${mm}:${ss}.${ms}`;
+            laps.push(timeStr);
+            console.log(`Lap ${laps.length}: ${timeStr}`);
+        }
+    }
+
+    document.getElementById('startBtn').addEventListener('click', startClock);
+    document.getElementById('stopBtn').addEventListener('click', stopClock);
+    document.getElementById('lapBtn').addEventListener('click', recordLap);
+</script>
+</body>
+</html>

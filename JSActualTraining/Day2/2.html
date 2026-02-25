@@ -1,0 +1,52 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Day2 JS 2</title>
+</head>
+<body>
+    <h1>The Deep Merge & Clone Engine</h1>
+    <p><b>Task:</b> Write a function deepUpdate(originalObj, updates).</p>
+    <p>
+        <b>Requirements:</b><br>
+            Use Object.entries() to loop through the properties of the updates object.<br>
+            If a value in updates is another object, you must recursively merge it.<br>
+            Use the Ternary Operator to check if a property exists before overwriting it.<br>
+        <b>Constraint:</b> You cannot mutate the originalObj. You must return a brand new object using the Spread Operator (...) at every level to ensure a deep clone/update.
+    </p>
+    <button onclick="runDemo()">Run deepUpdate Demo</button>
+    <pre id="output"></pre>
+
+<script>
+    function deepUpdate(originalObj, updates) {
+        // create new object from original
+        const result = { ...originalObj };
+        Object.entries(updates).forEach(([key, val]) => {
+            if (val && typeof val === 'object' && !Array.isArray(val)) {
+                // if original has object at key, recursively merge; otherwise clone update
+                result[key] = originalObj.hasOwnProperty(key)
+                    ? deepUpdate(originalObj[key], val)
+                    : deepUpdate({}, val);
+            } else {
+                // primitive or array; overwrite
+                result[key] = val;
+            }
+        });
+        return result;
+    }
+
+    function runDemo() {
+        const base = { a: 1, b: { c: 2, d: 3 }, e: 5 };
+        const upd = { b: { c: 20, f: 6 }, e: 50, g: 7 };
+        const merged = deepUpdate(base, upd);
+        const out = [];
+        out.push('base = ' + JSON.stringify(base, null, 2));
+        out.push('upd  = ' + JSON.stringify(upd, null, 2));
+        out.push('merged = ' + JSON.stringify(merged, null, 2));
+        document.getElementById('output').textContent = out.join('\n\n');
+    }
+</script>
+</body>
+</html>

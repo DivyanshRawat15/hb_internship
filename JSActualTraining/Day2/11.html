@@ -1,0 +1,50 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Day2 JS 11</title>
+</head>
+<body>
+    <h1>Guess The Number</h1>
+    <p>
+        Pick a random number between 1 and 100. Let the user guess. Tell them "Too high", "Too low", or "Correct!".
+        Use a loop (or repeated prompts) until they get it right.(using prompt box).
+    </p>
+    
+    <button id="startBtn">Start Guessing Game</button>
+    <p id="status"></p>
+<script>
+    document.getElementById('startBtn').addEventListener('click', startGame);
+
+    function startGame() {
+        const target = Math.floor(Math.random() * 100) + 1;
+        let guess;
+        let attempts = 0;
+        while (true) {
+            guess = prompt('Guess a number between 1 and 100:');
+            if (guess === null) { // user cancelled
+                document.getElementById('status').textContent = 'Game cancelled.';
+                return;
+            }
+            guess = parseInt(guess, 10);
+            attempts++;
+            if (isNaN(guess)) {
+                alert('Please enter a valid number.');
+                continue;
+            }
+            if (guess < target) {
+                alert('Too low');
+            } else if (guess > target) {
+                alert('Too high');
+            } else {
+                alert(`Correct! You guessed in ${attempts} tries.`);
+                document.getElementById('status').textContent = `You guessed the number ${target} in ${attempts} attempts.`;
+                break;
+            }
+        }
+    }
+</script>
+</body>
+</html>
