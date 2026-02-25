@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>JS 20</title>
+</head>
+<body>
+    
+    <h1>
+        Create the form and using for-in loop print all the attribute of the form and print its value also make its action attribute, 
+        name attribute, method attribute in BOLD.
+    </h1>
+<div id="details" style="border:1px solid; border-radius: 5px; width:400px; height: 170px;">
+    <form id="form" action="submit.php" name="myform" method="post" style="text-align: center;"><br>
+      <label for="fname">First name:</label> <br>
+      <input type="text" id="fname" name="fname" value="John"> <br> <br>
+      <label for="lname">Last name:</label> <br>
+      <input type="text" id="lname" name="lname" value="Doe"> <br> <br>
+      <input type="submit" onclick="return func()" value="Submit">
+    </form>
+</div>
+<!--<button onclick="func()">Click</button>-->
+<p id="result"></p>
+
+<script>
+    function func(){
+        // iterate over all attributes of the form element
+        const form = document.getElementById('form');
+        const attrs = form.attributes;
+        let output = '';
+        for (let i in attrs) {
+            if (attrs.hasOwnProperty(i)) {
+                const attr = attrs[i];
+                if (attr && attr.name) {
+                    let name = attr.name;
+                    let value = attr.value;
+                    if (name === 'action' || name === 'name' || name === 'method') {
+                        name = `<b>${name}</b>`;
+                        value = `<b>${value}</b>`;
+                    }
+                    output += `${name}: ${value}<br>`;
+                }
+            }
+        }
+        document.getElementById('result').innerHTML = output;
+        return false;
+    }
+</script>
+</body>
+</html>

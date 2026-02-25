@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>JS 22</title>
+    <style>
+        table{
+            border: 1px solid;
+            border-collapse: collapse;
+            width: 500px;
+            height: 200px;
+        }
+        tr, th{
+            border: 1px solid;
+            border-collapse: collapse;
+        }
+    </style>
+</head>
+<body>
+    
+    <h1>
+        Create a Table (html table) like below and on clicking of the red region alert should come that
+        selected region is red color, same for the rest of the color.
+    </h1>
+
+    <div>
+        <table>
+            <tr><th style="background-color: red;" onclick="alert('Selected/Clicked Region is Red')">Red</th></tr>
+            <tr><th style="background-color: green;" onclick="alert('Selected/Clicked Region is Green')">Green</th></tr>
+            <tr><th style="background-color: yellow;" onclick="alert('Selected/Clicked Region is Yellow')">Yellow</th></tr>
+            <tr><th style="background-color: black; color: white;" onclick="alert('Selected/Clicked Region is Black')">Black</th></tr>
+        </table>
+    </div>
+</body>
+</html>

@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>JS 25</title>
+</head>
+<body>
+    
+    <h1>
+        Create a Survey form using radio button, and check box and text box<br>
+        Add all the constraints under it and make validation for each field and at the show all the survey in the proper manner.<br>
+    </h1>
+    <p>
+        <b>Example:</b><br>
+        What is your favourite movie : [text box]<br>
+        Give rating to your favorite movie using radio button : <br>
+        (0) (0) (0) (0)<br>
+        1    2    3    4   5<br>
+        Radio button  select any of the radio button and store its rating.<br>
+            3)  Whats makes you happy?<br>
+                [ ] Music [ ] Bikes [ ] Cars [ ] Programming [ ] Cricket <br>
+            4)  Whats your birth date?<br>
+        Combo box for year, month and date<br>
+            5) Which city you like most?<br>
+                Make a multi select box and select at least two city put constraint for this too for minimum 2 city.<br>
+                Eg. 
+                Mumbai
+                Ahmedabad
+                Delhi
+                Banglore
+                Kolkata
+                Jaipur
+                Amritsar
+    </p>
+
+    <form id="survey" style="text-align: center; border: 1px solid; width: 700px; height: 440px;"><br>
+        <label for="movie">What is your favourite movie:</label><br>
+        <input type="text" id="movie" name="movie" placeholder="Movie title"><br><br>
+
+        <label>Give rating to your favorite movie using radio button:</label><br>
+        <label><input type="radio" name="rating" value="1">1</label>
+        <label><input type="radio" name="rating" value="2">2</label>
+        <label><input type="radio" name="rating" value="3">3</label>
+        <label><input type="radio" name="rating" value="4">4</label>
+        <label><input type="radio" name="rating" value="5">5</label><br><br>
+
+        <label>What makes you happy?</label><br>
+        <label><input type="checkbox" name="happy" value="Music"> Music</label>
+        <label><input type="checkbox" name="happy" value="Bikes"> Bikes</label>
+        <label><input type="checkbox" name="happy" value="Cars"> Cars</label>
+        <label><input type="checkbox" name="happy" value="Programming"> Programming</label>
+        <label><input type="checkbox" name="happy" value="Cricket"> Cricket</label><br><br>
+
+        <label>Whats your birth date?</label><br>
+        <select id="year"></select>
+        <select id="month"></select>
+        <select id="day"></select><br><br>
+
+        <label>Which city you like most? (select at least two)</label><br>
+        <select id="cities" multiple size="7">
+            <option value="Mumbai">Mumbai</option>
+            <option value="Ahmedabad">Ahmedabad</option>
+            <option value="Delhi">Delhi</option>
+            <option value="Bangalore">Bangalore</option>
+            <option value="Kolkata">Kolkata</option>
+            <option value="Jaipur">Jaipur</option>
+            <option value="Amritsar">Amritsar</option>
+        </select><br><br>
+
+        <button type="button" onclick="submitSurvey()">Submit Survey</button>
+    </form>
+    <div id="surveyResult" style="margin-top:20px; text-align:center;"></div>
+
+<script>
+    function populateDateSelectors(){
+        const yearSel = document.getElementById('year');
+        const monthSel = document.getElementById('month');
+        const daySel = document.getElementById('day');
+        const currentYear = new Date().getFullYear();
+        for(let y=currentYear; y>=1900; y--){
+            const opt = document.createElement('option');
+            opt.value = y;
+            opt.textContent = y;
+            yearSel.appendChild(opt);
+        }
+        const months=["Jan","Feb","Mar","Apr","May","Jun","Jul","Aug","Sep","Oct","Nov","Dec"];
+        months.forEach((m,i)=>{
+            const opt = document.createElement('option');
+            opt.value = i+1;
+            opt.textContent = m;
+            monthSel.appendChild(opt);
+        });
+        
+        for(let d=1; d<=31; d++){
+            const opt = document.createElement('option');
+            opt.value = d;
+            opt.textContent = d;
+            daySel.appendChild(opt);
+        }
+    }
+
+    function submitSurvey(){
+        const movie = document.getElementById('movie').value.trim();
+        if(movie===''){
+            alert('Please enter your favourite movie.');
+            return;
+        }
+        const ratingEls = document.getElementsByName('rating');
+        let rating;
+        for(const r of ratingEls){
+            if(r.checked){ rating = r.value; break; }
+        }
+        if(!rating){
+            alert('Please give a rating.');
+            return;
+        }
+        const happyEls = document.getElementsByName('happy');
+        const happyArr = [];
+        happyEls.forEach(h=>{ if(h.checked) happyArr.push(h.value); });
+        if(happyArr.length===0){
+            alert('Select at least one thing that makes you happy.');
+            return;
+        }
+        const year = document.getElementById('year').value;
+        const month = document.getElementById('month').value;
+        const day = document.getElementById('day').value;
+        if(!year || !month || !day){
+            alert('Please select full birth date.');
+            return;
+        }
+        const citySel = document.getElementById('cities');
+        const selectedCities = Array.from(citySel.selectedOptions).map(o=>o.value);
+        if(selectedCities.length < 2){
+            alert('Please select at least two cities.');
+            return;
+        }
+        
+        const resultDiv = document.getElementById('surveyResult');
+        resultDiv.innerHTML =
+            `<h2>Survey Results</h2>` +
+            `<p>Favourite movie: ${movie}</p>` +
+            `<p>Rating: ${rating}</p>` +
+            `<p>Makes you happy: ${happyArr.join(', ')}</p>` +
+            `<p>Birth date: ${year}-${month}-${day}</p>` +
+            `<p>Preferred cities: ${selectedCities.join(', ')}</p>`;
+    }
+
+    document.addEventListener('DOMContentLoaded', populateDateSelectors);
+</script>
+</body>
+</html>

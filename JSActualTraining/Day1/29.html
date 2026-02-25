@@ -1,0 +1,39 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>JS 28</title>
+</head>
+<body>
+    <h1>
+        Find all the occurrence of the char 'a' in below sentence and display its position<br>
+	</h1>
+    <p>
+        <b>Sentence:</b> India has a very good hope to win world cup.<br>
+	    [First occurrence of the 'a' is a 4<br>
+	    Second occurrence of the 'a' is a 7<br>
+	    Third occurrence of the 'a' is a 10]
+    </p>
+    <button onclick="findAs()">Show positions of 'a'</button>
+    <p id="sentence"></p>
+    <p id="positions"></p>
+    <p id="count"></p>
+
+<script>
+    function findAs() {
+        const sentence = "India has a very good hope to win world cup.";
+        document.getElementById('sentence').innerHTML = `<b>Sentence:</b> ${sentence}`;
+        const positions = [];
+        for (let i = 0; i < sentence.length; i++) {
+            if (sentence[i].toLowerCase() === 'a') {
+                positions.push(i + 1);
+            }
+        }
+        document.getElementById('positions').innerHTML = `Positions: ${positions.join(', ')}`;
+        document.getElementById('count').innerHTML = `Total occurrences: ${positions.length}`;
+    }
+</script>
+</body>
+</html>

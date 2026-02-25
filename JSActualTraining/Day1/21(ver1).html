@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>JS 21 (Ver01)</title>
+</head>
+<body>
+    
+    <h1>
+        Generate a Fibonacci series upto the some specific number on click of the button “Generate Fibonacci”.
+    </h1>
+<button onclick="func()">Generate Fibonacci</button>
+<p id="result"></p>
+
+<script>
+        let n1 = 0;
+        let n2 = 1;
+        let n3 = 0;
+        let y = "";
+        let i = 0;
+        function func(){
+            let x = parseInt(prompt("User Input:"));
+            for (i; i<=x; i++){
+                y += n1 + ", ";
+                n3 = n2+n1;
+                n1=n2;
+                n2=n3;
+            }
+            document.getElementById("result").innerHTML = y;
+        }
+    </script>
+</script>
+</body>
+</html>

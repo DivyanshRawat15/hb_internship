@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>JS 26</title>
+</head>
+<body>
+    <h1 style="text-align:center;">Digital Clock with Lap Times</h1>
+    <div id="clock" style="font-size:2em; text-align:center; margin:20px;"></div>
+    <div style="text-align:center;">
+        <button id="lapBtn">Lap</button>
+        <button id="resetBtn">Reset</button>
+    </div>
+    <div style="width:200px; margin:20px auto;">
+        <h3>Laps</h3>
+        <ul id="laps" style="list-style-type:decimal;padding-left:20px;"></ul>
+    </div>
+
+<script>
+    let clockTimeout;
+    function updateClock(){
+        const now = new Date();
+        const hh = String(now.getHours()).padStart(2,'0');
+        const mm = String(now.getMinutes()).padStart(2,'0');
+        const ss = String(now.getSeconds()).padStart(2,'0');
+        const timeStr = `${hh}:${mm}:${ss}`;
+        document.getElementById('clock').textContent = timeStr;
+        clockTimeout = setTimeout(updateClock, 1000);
+    }
+
+    function addLap(){
+        const timeStr = document.getElementById('clock').textContent;
+        if(timeStr){
+            const li = document.createElement('li');
+            li.textContent = timeStr;
+            document.getElementById('laps').appendChild(li);
+        }
+    }
+
+    function resetClock(){
+        clearTimeout(clockTimeout);
+        document.getElementById('clock').textContent = '';
+        document.getElementById('laps').innerHTML = '';
+        updateClock();
+    }
+
+    document.addEventListener('DOMContentLoaded', () => {
+        updateClock();
+        document.getElementById('lapBtn').addEventListener('click', addLap);
+        document.getElementById('resetBtn').addEventListener('click', resetClock);
+    });
+</script>
+</body>
+</html>

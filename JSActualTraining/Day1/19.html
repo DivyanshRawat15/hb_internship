@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>JS 19</title>
+</head>
+<body>
+    
+    <h1>
+        print the number between two numbers using a while loop.
+    </h1>
+    <p>start = 35;<br>end = 100;</p>
+
+<button onclick="func()">Click</button>
+<p id="result"></p>
+
+<script>
+    function func(){
+        const st = 35;
+        const end = 100;
+        let i = st;
+        let arr = [];
+        while (i <= end){
+            arr.push(i);
+            i++;
+        }
+        let x = arr.join(' ');
+        console.log(x);
+        document.getElementById('result').innerHTML = `Number's are ${x}`;      
+    }
+</script>
+</body>
+</html>

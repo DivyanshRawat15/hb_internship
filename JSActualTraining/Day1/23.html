@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>JS 23</title>
+    <style>
+        table{
+            border: 1px solid;
+            border-collapse: collapse;
+            width: 500px;
+            height: 200px;
+        }
+        tr, th{
+            border: 1px solid;
+            border-collapse: collapse;
+        }
+    </style>
+</head>
+<body>
+    
+    <h1>
+        From the above table Create a log on the mouse over and display the count that how much time the mouse pass on the each region
+	</h1>
+    <p>
+        Eg. In div
+		Mouse move on red region : 10 times;
+		Mouse move on green region : 5 times;
+		Mouse move on yellow region : 17 times;
+		Mouse move on black region : 25 times;
+    </p>
+
+    <div>
+        <table>
+            <tr><th id="red" style="background-color: red;" onclick="alert('Selected/Clicked Region is Red')">Red</th></tr>
+            <tr><th id="green" style="background-color: green;" onclick="alert('Selected/Clicked Region is Green')">Green</th></tr>
+            <tr><th id="yellow" style="background-color: yellow;" onclick="alert('Selected/Clicked Region is Yellow')">Yellow</th></tr>
+            <tr><th id="black" style="background-color: black; color: white;" onclick="alert('Selected/Clicked Region is Black')">Black</th></tr>
+        </table>
+    </div>
+    <p id="result"></p>
+
+<script>
+    const counts = { red: 0, green: 0, yellow: 0, black: 0 };
+
+    function updateResult() {
+        document.getElementById('result').innerHTML =
+            `Mouse move on red region : ${counts.red} times;<br>` +
+            `Mouse move on green region : ${counts.green} times;<br>` +
+            `Mouse move on yellow region : ${counts.yellow} times;<br>` +
+            `Mouse move on black region : ${counts.black} times;`;
+    }
+
+    // attach listeners once DOM is ready
+    document.addEventListener('DOMContentLoaded', () => {
+        document.querySelectorAll('th').forEach(cell => {
+            cell.addEventListener('mouseenter', () => {
+                const color = cell.textContent.trim().toLowerCase();
+                if (counts[color] !== undefined) {
+                    counts[color]++;
+                    updateResult();
+                }
+            });
+        });
+    });
+
+    function func(){
+        // manual display of current counts as well
+        updateResult();
+    }
+</script>
+</body>
+</html>

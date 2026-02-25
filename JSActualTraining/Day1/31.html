@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>JS 31</title>
+</head>
+<body style="background:#eee; font-family: Arial;">
+<div style="width:600px; margin:40px auto; background:orange; padding:20px;">
+    <h1>Calculate the age of you. Make the design like this</h1>
+    <label>Birthday:</label>
+    <select id="month">
+        <option value="0">January</option>
+        <option value="1">February</option>
+        <option value="2">March</option>
+        <option value="3">April</option>
+        <option value="4">May</option>
+        <option value="5">June</option>
+        <option value="6">July</option>
+        <option value="7">August</option>
+        <option value="8">September</option>
+        <option value="9">October</option>
+        <option value="10">November</option>
+        <option value="11">December</option>
+    </select>
+    <input type="number" id="day" min="1" max="31" value="1" style="width:60px;">
+    <input type="number" id="year" min="1900" value="2000" style="width:80px;">
+    <button onclick="calculateAge()">Calculate</button>
+    <div id="result" style="background:yellow; padding:15px; margin-top:20px;"></div>
+</div>
+<script>
+function calculateAge() {
+    var month = parseInt(document.getElementById("month").value);
+    var day = parseInt(document.getElementById("day").value);
+    var year = parseInt(document.getElementById("year").value);
+    var birthDate = new Date(year, month, day);
+    var today = new Date();
+    if (birthDate > today) {
+        document.getElementById("result").innerHTML = "Invalid Date";
+        return;
+    }
+    var diff = today - birthDate;
+    var seconds = Math.floor(diff / 1000);
+    var minutes = Math.floor(seconds / 60);
+    var hours = Math.floor(minutes / 60);
+    var days = Math.floor(hours / 24);
+    var weeks = Math.floor(days / 7);
+    var months = Math.floor(days / 30.4375);
+    var years = Math.floor(days / 365.25);
+    // Next Birthday
+    var nextBirthday = new Date(today.getFullYear(), month, day);
+    if (nextBirthday < today) {
+        nextBirthday.setFullYear(today.getFullYear() + 1);
+    }
+    var diffNext = nextBirthday - today;
+    var nbSeconds = Math.floor(diffNext / 1000) % 60;
+    var nbMinutes = Math.floor(diffNext / (1000 * 60)) % 60;
+    var nbHours = Math.floor(diffNext / (1000 * 60 * 60)) % 24;
+    var nbDays = Math.floor(diffNext / (1000 * 60 * 60 * 24));
+    document.getElementById("result").innerHTML =
+        "You are " + years + " years old...<br><br>" +
+        "or " + months + " months old<br>" +
+        "or " + weeks + " weeks old<br>" +
+        "or " + days + " days old<br>" +
+        "or " + hours + " hours old<br>" +
+        "or " + minutes + " minutes old<br>" +
+        "or " + seconds + " seconds old<br><br>" +
+        "And, your next birthday is in:<br>" +
+        nbDays + " days " +
+        nbHours + " hrs " +
+        nbMinutes + " mins " +
+        nbSeconds + " secs";
+}
+</script>
+</body>
+</html>

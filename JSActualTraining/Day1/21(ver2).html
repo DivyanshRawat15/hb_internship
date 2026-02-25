@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>JS 21 (Ver02)</title>
+</head>
+<body>
+    
+    <h1>
+        Generate a Fibonacci series upto the some specific number on click of the button “Generate Fibonacci”.
+    </h1>
+<button onclick="generateFibo()">Generate Fibonacci</button>
+<p id="result"></p>
+
+<script>
+    // helper to check if a number is in the Fibonacci sequence
+    function isFibonacci(num) {
+        if (num < 0) return false;
+        let a = 0, b = 1;
+        if (num === 0) return true;
+        while (b < num) {
+            const next = a + b;
+            a = b;
+            b = next;
+        }
+        return b === num;
+    }
+
+    function generateFibo() {
+        const input = parseInt(prompt("Enter a Fibonacci number:"), 10);
+        if (isNaN(input)) {
+            alert("Please enter a valid number.");
+            return;
+        }
+        if (!isFibonacci(input)) {
+            alert("Input is not a Fibonacci number. Please try again.");
+            return;
+        }
+        // generate series up to the input value
+        let a = 0, b = 1;
+        const series = [];
+        series.push(a);
+        while (b <= input) {
+            series.push(b);
+            const next = a + b;
+            a = b;
+            b = next;
+        }
+        document.getElementById("result").innerHTML = series.join(", ");
+    }
+</script>
+</body>
+</html>

@@ -1,0 +1,42 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>JS 28</title>
+</head>
+<body>
+    <h1>
+        Find out the given string is a palindrome or not?
+	    (a word or phrase that reads the same backward as forward)<br>
+	    [Eg. Nayan is a palindrome
+	    Nischay is not a palindrome]
+
+    </h1>
+    <button onclick="func()">Click</button>
+    <p id="original"></p>
+    <p id="result1"></p>
+    <p id="result2"></p>
+
+<script>
+    function reverseCharacters(str) {
+        return str.split('').reverse().join('');
+    }
+
+    function reverseWords(str) {
+        return str.split(' ').reverse().join(' ');
+    }
+
+    function func() {
+        const sentence = "We will win the world cup.";
+        const charReversed = reverseCharacters(sentence);
+        const wordReversed = reverseWords(sentence);
+        
+        document.getElementById('original').innerHTML = `Original : ${sentence}`;
+        document.getElementById('result1').innerHTML = `Reverse1 : ${charReversed}`;
+        document.getElementById('result2').innerHTML = `Reverse2 : ${wordReversed}`;
+    }
+</script>
+</body>
+</html>

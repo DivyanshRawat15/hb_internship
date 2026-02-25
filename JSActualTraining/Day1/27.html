@@ -1,0 +1,44 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>JS 26</title>
+</head>
+<body>
+    <h1>
+        Find out the given string is a palindrome or not?
+        (a word or phrase that reads the same backward as forward)
+        Eg. Nayan is a palindrome
+        Nischay is not a palindrome
+    </h1>
+    <form onsubmit="return isPalindrome();">
+        <label id="string">Enter The Input String</label>
+        <input type="text" id="str" placeholder="Enter the String">
+        <input type="submit" value="Check">
+    </form>
+    <p id="result">  </p>
+<script>
+    function isPalindrome() {
+        const str = document.getElementById('str').value;
+        if (!str) {
+            alert('Please enter a string.');
+            return false;
+        }
+        // Normalize input
+        const cleanedStr = str.toLowerCase().replace(/[^a-z0-9]/g, '');
+        const reversedStr = cleanedStr.split('').reverse().join('');
+        const resultEl = document.getElementById('result');
+        if (cleanedStr === reversedStr) {
+            console.log(`The String ${str} is a palindrome!`);
+            resultEl.innerHTML = `The String <b>${str}</b> is a palindrome!`;
+        } else {
+            console.log(`The String ${str} is not a palindrome!`);
+            resultEl.innerHTML = `The String <b>${str}</b> is not a palindrome!`;
+        }
+        return false;
+    }
+</script>
+</body>
+</html>

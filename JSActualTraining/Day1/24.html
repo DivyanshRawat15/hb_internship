@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>JS 24</title>
+</head>
+<body>
+    
+    <h1>
+        Create a 2 text box and create a combo box under which the value should be “+”, “*”, “/”, “-”
+        And one button “calculate” which will display the current operation and its value 
+        And put all the constraint like text box should contain only number not null.
+    </h1>
+    <form id="form" action="submit.php" name="myform" method="post" style="text-align: center;"><br>
+      <label for="num1">First Number:</label> <br>
+      <input type="number" id="num1" name="num1" placeholder="Enter Number"> <br> <br>
+      <select id="operation" name="operations">
+          <option value="+">+</option>
+          <option value="-">-</option>
+          <option value="/">/</option>
+          <option value="*">*</option>
+      </select><br><br>
+      <label for="num2">Second Number:</label> <br>
+      <input type="number" id="num2" name="num2" placeholder="Enter Number"> <br> <br>
+      <input type="submit" onclick="return calc()" value="Calculate">
+    </form>
+    <p id="result"></p>
+
+<script>
+    function calc(){
+        const n1 = document.getElementById('num1').value.trim();
+        const n2 = document.getElementById('num2').value.trim();
+        const op = document.getElementById('operation').value;
+        // validate
+        if (n1 === '' || n2 === '') {
+            alert('Both fields are required and must be numbers.');
+            return false;
+        }
+        const a = parseFloat(n1);
+        const b = parseFloat(n2);
+        if (isNaN(a) || isNaN(b)) {
+            alert('Please enter valid numbers in both boxes.');
+            return false;
+        }
+        let result;
+        switch (op) {
+            case '+': result = a + b; break;
+            case '-': result = a - b; break;
+            case '*': result = a * b; break;
+            case '/':
+                if (b === 0) {
+                    alert('Cannot divide by zero.');
+                    return false;
+                }
+                result = a / b;
+                break;
+            default:
+                alert('Unknown operation');
+                return false;
+        }
+        document.getElementById('result').innerHTML =
+            `Operation: ${a} ${op} ${b} = ${result}`;
+        return false;
+    }
+</script>
+</body>
+</html>
