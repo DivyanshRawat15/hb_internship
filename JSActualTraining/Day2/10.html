@@ -1,0 +1,77 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Day2 JS 10</title>
+</head>
+<body>
+    <h1>Calculator</h1>
+    <p>
+        <b>Goal:</b> Build a simple calculator that takes two numbers and supports +, -, x, ÷.
+        Use variables to store the inputs and the result. Handle division by zero (show a message instead of Infinity)
+        (Using Prompt Box)
+    </p>
+    <button id="inp" onclick="inp()">Input Numbers</button><br><br>
+
+    <p id="input1"></p>
+    <p id="input2"></p><br><br>
+    <button onclick="add()">(+)ADDITION</button>
+    <button onclick="sub()">(-)SUBTRACTION</button>
+    <button onclick="mul()">(*)MULTIPLY</button>
+    <button onclick="div()">(/)DIVIDE</button>
+    <p id="result"></p>
+<script>
+    // variables to hold inputs
+    let inp1 = null;
+    let inp2 = null;
+
+    function inp(){
+        inp1 = parseFloat(prompt("Enter Input 1 "));
+        inp2 = parseFloat(prompt("Enter Input 2 "));
+        if (isNaN(inp1)) inp1 = 0;
+        if (isNaN(inp2)) inp2 = 0;
+        document.getElementById("input1").innerHTML = `Input 1 : ${inp1}`;
+        document.getElementById("input2").innerHTML = `Input 2 : ${inp2}`;
+        document.getElementById("result").innerHTML = '';
+    }
+    
+    function add(){
+        if(inp1 === null || inp2 === null){
+            alert('Please provide both inputs first');
+            return;
+        }
+        document.getElementById("result").innerHTML = `Result: ${inp1 + inp2}`;
+    }
+
+    function sub(){
+        if(inp1 === null || inp2 === null){
+            alert('Please provide both inputs first');
+            return;
+        }
+        document.getElementById("result").innerHTML = `Result: ${inp1 - inp2}`;
+    }
+
+    function mul(){
+        if(inp1 === null || inp2 === null){
+            alert('Please provide both inputs first');
+            return;
+        }
+        document.getElementById("result").innerHTML = `Result: ${inp1 * inp2}`;
+    }
+
+    function div(){
+        if(inp1 === null || inp2 === null){
+            alert('Please provide both inputs first');
+            return;
+        }
+        if(inp2 === 0){
+            document.getElementById("result").innerHTML = 'Cannot divide by zero';
+            return;
+        }
+        document.getElementById("result").innerHTML = `Result: ${inp1 / inp2}`;
+    }
+</script>
+</body>
+</html>

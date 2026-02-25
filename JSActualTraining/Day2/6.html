@@ -1,0 +1,42 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Day2 JS 6</title>
+</head>
+<body>
+    <h1>String Reversal Implementations</h1>
+    <p>The Task: Reverse the given sentence: "We will win the world cup."</p>
+    <p>
+        Requirements:<br>
+            Reverse 1 (Character-level): Reverse the entire string, => resulting in: .puc dlrow eht niw lliw ew<br>
+            Reverse 2 (Word-level): Reverse the order of the words, => resulting in: cup. world the win will We
+    </p>
+    <button onclick="func()">Click</button>
+    <p id="original"></p>
+    <p id="result1"></p>
+    <p id="result2"></p>
+
+<script>
+    function reverseCharacters(str) {
+        return str.split('').reverse().join('');
+    }
+
+    function reverseWords(str) {
+        return str.split(' ').reverse().join(' ');
+    }
+
+    function func() {
+        const sentence = "We will win the world cup.";
+        const charReversed = reverseCharacters(sentence);
+        const wordReversed = reverseWords(sentence);
+        
+        document.getElementById('original').innerHTML = `Original : ${sentence}`;
+        document.getElementById('result1').innerHTML = `Reverse1 : ${charReversed}`;
+        document.getElementById('result2').innerHTML = `Reverse2 : ${wordReversed}`;
+    }
+</script>
+</body>
+</html>

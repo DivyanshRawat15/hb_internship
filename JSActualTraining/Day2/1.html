@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Day2 JS 1</title>
+</head>
+<body>
+    <h1>
+        Notification Manager System
+	</h1>
+    <p><b>Goal:</b> Create a robust notification system that manages multiple alerts displayed on a screen (simulated, e.g., via console logs).</p>
+    <p><b>The Task:</b> Create a NotificationManager object.</p>
+    <p><b>Requirements:</b><ul>
+        <li>It must have a Set to store active notification IDs (ensuring uniqueness).</li>
+        <li>Implement an add(message, duration) method that creates a notification object and uses setTimeout to automatically trigger its removal after the specified duration.</li>
+        <li>Implement a clearAll() method that must use clearTimeout on every pending notification to prevent memory leaks before wiping the system state.</li></ul>
+    </p>
+    <p id="result"></p>
+    <div style="text-align:center; margin-top:20px;">
+        <input type="text" id="msgInput" placeholder="Notification message">
+        <input type="number" id="durInput" placeholder="Duration ms" style="width:100px;">
+        <button id="addBtn">Add Notification</button>
+        <button id="clearBtn">Clear All</button>
+    </div>
+    <div style="text-align:center; margin-top:10px;">
+        <strong>Active IDs:</strong> <span id="activeIds">none</span>
+    </div>
+<script>
+    class NotificationManager {
+        constructor() {
+            this.activeIds = new Set();
+            this.timers = new Map();
+        }
+        add(message, duration) {
+            let id;
+            do {
+                id = 'notif_' + Math.floor(Math.random() * 1e9);
+            } while (this.activeIds.has(id));
+
+            this.activeIds.add(id);
+            console.log(`Added [${id}]: ${message} (will expire in ${duration}ms)`);
+            this._updateDisplay();
+
+            const timeoutId = setTimeout(() => {
+                this.remove(id);
+            }, duration);
+
+            this.timers.set(id, timeoutId);
+            return id;
+        }
+        remove(id) {
+            if (!this.activeIds.has(id)) return;
+            this.activeIds.delete(id);
+            const t = this.timers.get(id);
+            if (t !== undefined) {
+                clearTimeout(t);
+                this.timers.delete(id);
+            }
+            console.log(`Notification [${id}] removed`);
+            this._updateDisplay();
+        }
+        clearAll() {
+            for (const [id, t] of this.timers.entries()) {
+                clearTimeout(t);
+            }
+            this.timers.clear();
+            this.activeIds.clear();
+            console.log('All notifications cleared');
+            this._updateDisplay();
+        }
+        _updateDisplay() {
+            const el = document.getElementById('activeIds');
+            if (this.activeIds.size === 0) {
+                el.textContent = 'none';
+            } else {
+                el.textContent = Array.from(this.activeIds).join(', ');
+            }
+        }
+    }
+    const manager = new NotificationManager();
+    document.getElementById('addBtn').addEventListener('click', () => {
+        const msg = document.getElementById('msgInput').value.trim();
+        let dur = parseInt(document.getElementById('durInput').value, 10);
+        if (!msg) {
+            alert('Enter a message');
+            return;
+        }
+        if (isNaN(dur) || dur <= 0) {
+            alert('Enter a positive duration');
+            return;
+        }
+        manager.add(msg, dur);
+    });
+    document.getElementById('clearBtn').addEventListener('click', () => {
+        manager.clearAll();
+    });
+</script>
+</body>
+</html>
