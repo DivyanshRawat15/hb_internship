@@ -1,0 +1,42 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Day3 JS 7</title>
+</head>
+<body> 
+    <h1>
+        Find all text input fields whose value:<ul>
+            <li>Contains the word "world" anywhere</li>
+            <li>Starts with the word "world"</li>
+        </ul>
+        Use JavaScript string methods for validation and filtering.
+    </h1>
+    <input type="text" value="hello world">
+    <input type="text" value="world peace">
+    <input type="text" value="example text">
+    <input type="text" value="worldwide news">
+    
+    <button onclick="filterInputs()">Check</button>
+    
+    <script>
+    function filterInputs() {
+        const inputs = document.querySelectorAll('input[type="text"]');
+    
+        inputs.forEach(input => {
+            const value = input.value.toLowerCase();
+        
+            if (value.includes("world")) {
+                console.log("Contains 'world':", value);
+            }
+        
+            if (value.startsWith("world")) {
+                console.log("Starts with 'world':", value);
+            }
+        });
+    }
+    </script>
+</body>
+</html>

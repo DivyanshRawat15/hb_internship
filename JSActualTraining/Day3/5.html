@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Day3 JS 5</title>
+    <style>
+        .input {
+            border: 2px solid blue;
+            padding: 5px;
+        }
+    </style>
+</head>
+<body>
+    <h1>
+        Find all input boxes inside the HTML form and dynamically add a class input to each element using JavaScript.
+	</h1>
+    <form id="myForm">
+        <input type="text">
+        <input type="email">
+        <input type="password">
+    </form>
+
+    <button onclick="addClass()">Add Class</button>
+
+    <script>
+    function addClass() {
+        const inputs = document.querySelectorAll("#myForm input");
+
+        inputs.forEach(input => {
+            input.classList.add("input");
+        });
+    }
+    </script>
+</body>
+</html>

@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Day3 JS 1</title>
+    <style>
+        table{
+            border: 1px solid;
+            border-collapse: collapse;
+            width: 500px;
+            height: 200px;
+        }
+        tr, th{
+            border: 1px solid;
+            border-collapse: collapse;
+        }
+    </style>
+</head>
+<body>
+    
+    <h2>
+        Apply a click event to all buttons in one HTML page using JavaScript.<br>
+        When clicking a button, display its value in an alert.
+    </h2>
+    <p>
+        <b>Example:</b><br>
+            If there are three buttons: (button1), (button2), (button3)<br>
+            Clicking button2 should show:<br>
+            alert("button2 clicked");
+    </p>
+
+    <button onclick="btn1()"> Button 1 </button>
+    <button onclick="btn2()"> Button 2 </button>
+    <button onclick="btn3()"> Button 3 </button>
+
+    <script>
+        function btn1(){
+            alert("Button 1 Clicked");
+        }
+        function btn2(){
+            alert("Button 2 Clicked");
+        }
+        function btn3(){
+            alert("Button 3 Clicked");
+        }
+    </script>
+</body>
+</html>

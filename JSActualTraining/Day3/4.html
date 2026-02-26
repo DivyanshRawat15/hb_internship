@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Day3 JS 4</title>
+    <style>
+        .border_class {
+            width: 100px;
+            height: 100px;
+            background: lightgray;
+            margin: 10px;
+        }
+    </style>
+</head>
+<body>
+    
+    <h1>
+        On clicking any button, apply a 3px solid border and increase the width by 50px and height by 50px for each element having class name "border_class" using JavaScript.
+	</h1>
+
+    <button onclick="applyChanges()">Click Me</button>
+
+    <div class="border_class"></div>
+    <div class="border_class"></div>
+    <div class="border_class"></div>
+
+    <script>
+    function applyChanges() {
+        const elements = document.querySelectorAll(".border_class");
+
+        elements.forEach(elem => {
+            elem.style.border = "3px solid black";
+
+            elem.style.width = (elem.offsetWidth + 50) + "px";
+            elem.style.height = (elem.offsetHeight + 50) + "px";
+        });
+    }
+    </script>
+</body>
+</html>

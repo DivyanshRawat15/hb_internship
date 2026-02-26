@@ -1,0 +1,35 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Day3 JS 10</title>
+</head>
+<body>
+    
+    <h1>
+        Create a slider in your page using:<br>
+            <ol><li>HTML</li>
+            <li>Build a custom slider using JavaScript and mouse events.</li></ul>
+    </h1>
+    <div class="slidecontainer">
+        <label for="myRange">Value:</label>
+        <input type="range" min="1" max="100" value="50" class="slider" id="myRange">
+        <span id="demo">50</span>
+    </div>
+    <script>
+        // Get the slider and output elements
+        var slider = document.getElementById("myRange");
+        var output = document.getElementById("demo");
+        
+        // Display the default slider value
+        output.innerHTML = slider.value;
+        
+        // Update the current slider value (each time you drag the slider handle)
+        slider.oninput = function() {
+        output.innerHTML = this.value;
+        }
+    </script>
+</body>
+</html>
