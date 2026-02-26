@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Day3 JS 8</title>
+    <style>
+        .dynamicClass {
+            border: 3px solid red;
+            background-color: lightyellow;
+            padding: 10px;
+            margin: 5px;
+        }
+    </style>
+</head>
+<body>
+    
+    <h1>
+        Dynamically assign a class to all [div] elements in the HTML page using JavaScript. On button click, remove the same class from all [div] elements.
+	</h1>
+    <div>Div 1</div>
+    <div>Div 2</div>
+    <div>Div 3</div>
+    <button id="removeBtn">Remove Class</button>
+
+    <script>
+        const allDivs = document.querySelectorAll("div");
+        allDivs.forEach(function(div){
+            div.classList.add("dynamicClass");
+        });
+        document.getElementById("removeBtn").addEventListener("click", function(){
+            allDivs.forEach(function(div){
+                div.classList.remove("dynamicClass");
+            });
+        });
+    </script>
+</body>
+</html>

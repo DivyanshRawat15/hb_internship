@@ -1,0 +1,79 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Day3 JS 18</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+        .div-table { display: table; width: 100%; border-collapse: collapse; }
+        .div-table-row { display: table-row; }
+        .div-table-cell { display: table-cell; padding: 8px; border: 1px solid #ccc; }
+        .div-table-header { font-weight: bold; background: #eee; }
+        .odd { background-color: #fdff7e; }
+        .even { background-color: #79a7fb; }
+        .div_over { background-color: #ffffff !important; }
+    </style>
+</head>
+<body class="container-sm">
+    <h1>
+        JS Question 30 > 
+        Make one html with div and give odd color even color class and on mouse over change the class of div to third class div_over.<br>
+        Note: Make all this in div!
+	</h1>
+    <div class="div-table">
+        <div class="div-table-row div-table-header">
+            <div class="div-table-cell">Row #</div>
+            <div class="div-table-cell">Lastname</div>
+            <div class="div-table-cell">Firstname</div>
+        </div>
+        
+        <div class="div-table-row">
+            <div class="div-table-cell">1</div>
+            <div class="div-table-cell">Williams</div>
+            <div class="div-table-cell">Steve</div>
+        </div>
+        
+        <div class="div-table-row">
+            <div class="div-table-cell">2</div>
+            <div class="div-table-cell">Smith</div>
+            <div class="div-table-cell">Edward</div>
+        </div>
+
+        <div class="div-table-row">
+            <div class="div-table-cell">3</div>
+            <div class="div-table-cell">Jones</div>
+            <div class="div-table-cell">John</div>
+        </div>
+
+        <div class="div-table-row">
+            <div class="div-table-cell">4</div>
+            <div class="div-table-cell">Johnson</div>
+            <div class="div-table-cell">Neil</div>
+        </div>
+
+        <div class="div-table-row">
+            <div class="div-table-cell">5</div>
+            <div class="div-table-cell">Brown</div>
+            <div class="div-table-cell">Joe</div>
+        </div>
+    </div>
+
+<script>
+    // assign odd/even classes and handle hover
+    document.addEventListener('DOMContentLoaded', () => {
+        const rows = document.querySelectorAll('.div-table-row:not(.div-table-header)');
+        rows.forEach((row, idx) => {
+            row.classList.add(idx % 2 === 0 ? 'odd' : 'even');
+            row.addEventListener('mouseover', () => {
+                row.classList.add('div_over');
+            });
+            row.addEventListener('mouseout', () => {
+                row.classList.remove('div_over');
+            });
+        });
+    });
+</script>
+</body>
+</html>

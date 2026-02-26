@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Day3 JS 9</title>
+</head>
+<body id="body">
+    
+    <h1>
+        Show and hide a [div] using JavaScript with fading effects. Recreate behavior similar to:<ol>
+        <li>fadeIn()</li><li>fadeOut()</li><li>hide()</li><li>slow animation</li>
+        </ol> Use setInterval(), setTimeout() or requestAnimationFrame().
+	</h1>
+    <script type="text/javascript">
+        window.onload=fadeout;
+        
+        function fadeout() {
+            var fade= document.getElementById("body");
+
+            var intervalID = setInterval(function () {
+            
+        if (!fade.style.opacity) {
+            fade.style.opacity = 1;
+        }
+
+
+        if (fade.style.opacity > 0) {
+            fade.style.opacity -= 0.1;
+        }
+
+        else {
+            clearInterval(intervalID);
+        }
+
+            }, 300);
+        }
+    </script>
+</body>
+</html>

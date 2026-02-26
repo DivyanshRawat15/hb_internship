@@ -1,0 +1,33 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Day3 JS 6</title>
+</head>
+<body>
+    
+    <h1>
+        Find all [span] elements inside [div id="container_id"] and display all their HTML content inside a new [div id="new_id"] using JavaScript DOM manipulation.
+    </h1>
+    <div id="container_id">
+        <span>Span1</span>
+        <span>Span2</span>
+        <span>Span3</span>
+    </div>
+    <div id="new_id"></div>
+    <script>
+        // Step 1: Select all span elements inside container_id
+        const spans = document.querySelectorAll('#container_id span');
+        
+        // Step 2: Select target div
+        const newDiv = document.getElementById('new_id');
+        
+        // Step 3: Loop and append HTML content
+        spans.forEach(span => {
+            newDiv.innerHTML += span.innerHTML + "<br>";
+        });
+    </script>
+</body>
+</html>
