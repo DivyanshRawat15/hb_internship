@@ -1,0 +1,220 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>practice (ipm)</title>
+    <style>
+        body{font-family: Arial, Helvetica, sans-serif; margin: 20px;}
+        input, select{margin: 5px 0; padding: 5px;}
+        table{border-collapse: collapse; width: 100%; margin-top: 20px;}
+        th, td{border: 1px solid #ccc; padding: 8px; text-align: center;}
+        th{background: #f2f2f2;}
+        .error{color:red; font-size: 14px;}
+    </style>
+</head>
+<body>
+    <h2>inventory produt manager</h2>
+    <form id="productform">
+        <label>Product Name:</label><br>
+        <input type="text" id="name"><br>
+
+        <label>SKU (PROD-XXXX):</label><br>
+        <input type="text" id="sku"><br>
+
+        <label>Category:</label><br>
+        <select id="category">
+            <option value="">Select</option>
+            <option>Electronics</option>
+            <option>Fashion</option>
+            <option>Home</option>
+            <option>Food</option>
+        </select><br>
+
+        <label>Unit Price:</label><br>
+        <input type="number" id="price"><br>
+
+        <label>Stock Price:</label><br>
+        <input type="number" id="quantity"><br>
+
+        <label>Expiry Date:</label><br>
+        <input type="date" id="expiry"><br>
+
+        <label>Status:</label><br>
+        <input type="radio" name="status" value="In Stock">In Stock
+        <input type="radio" name="status" value="Out of Stock">Out of Stock
+        <input type="radio" name="status" value="Discontinued">Discontinued
+        <br><br>
+
+        <button type="submit">Save Product</button>
+    </form>
+
+    <p class="error" id="error"></p>
+    <hr>
+
+    <input type="text" id="search" placeholder="Search by Name or Category">
+
+    <table>
+        <thead>
+            <tr>
+                <th>Name</th>
+                <th>SKU</th>
+                <th>Category</th>
+                <th>Price</th>
+                <th>Qty</th>
+                <th>Expiry</th>
+                <th>Status</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody id="productTable"></tbody>
+    </table>
+
+    <script>
+        let editIndex = null;
+
+        function getProducts(){
+            return JSON.parse(localStorage.getItem("products")) || [];
+        }
+
+        function saveProducts(products){
+            localStorage.setItem("products", JSON.stringify(products));
+        }
+
+        function validateform(product){
+            const skuRegex = /^PROD-\d{4}$/;
+
+            if(product.name.length < 3){
+                return "Product name must be at least 3 characters.";
+            }
+
+            if(!skuRegex.test(product.sku)){
+                return "SKU must follow format PROD-1234.";
+            }
+
+            if(!product.category){
+                return "Category is required.";
+            }
+
+            if(product.price <= 0){
+                return "Price must be greater than 0.";
+            }
+
+            if(!Number.isInteger(product.quantity) || product.quantity < 0){
+                return "Quantity must be 0 or higher.";
+            }
+
+            if(product.Category === "Food" && !product.expiry){
+                return "Expiry date required for Food category.";
+            }
+
+            if(!product.status){
+                return "Status must be selected.";
+            }
+
+            return null;
+        }
+
+        document.getElementById("productform").addEventListener("submit", function(e){
+            
+            e.preventDefault();
+
+            const errorBox = document.getElementById("error");
+            errorBox.innerText = "";
+
+            const products = getProducts();
+
+            const product = {
+                name: document.getElementById("name").value.trim(),
+                sku: document.getElementById("sku").value.trim(),
+                category: document.getElementById("category").value.trim(),
+                price: Number(getElementById("price").value),
+                quantity: Number(getElementById("quantity").value),
+                expiry: document.getElementById("expiry").value,
+                status: document.querySelector("input[name='status']:checked")?.value
+            };
+
+            const validationError = validationForm(product);
+            if(validationError){
+                errorBox.innerText = validationError;
+                return;
+            }
+
+            const duplicate = products.find(p => p.sku === product.sku);
+            if(duplicate && editIndex === null){
+                errorBox.innerText = "SKU already exists.";
+                return;
+            }
+
+            if(editIndex != null){
+                products[editIndex] = product;
+                editIndex = null;
+            } else {
+                products.push(product);
+            }
+
+            saveProducts(products);
+            displayProducts();
+            document.getElementById("productform").reset();
+        });
+
+        function displayProducts(filter = ""){
+            const products = getProducts();
+            const table = document.getElementById("productTable");
+            table.innerHTML = "";
+
+            products
+            .filter(p =>
+                p.name.toLowerCase().includes(filter.toLowerCase()) ||
+                p.category.toLowerCase().includes(filter.toLowerCase())
+            )
+            .forEach((product, index) => {
+                
+                table.innerHTML += `
+                <tr>
+                    <td>${product.name}</td>
+                    <td>${product.sku}</td>
+                    <td>${product.category}</td>
+                    <td>${product.price}</td>
+                    <td>${product.quantity}</td>
+                    <td>${product.expiry}</td>
+                    <td>${product.status}</td>
+                    <td>
+                        <button onclick="editProduct(${index})">Edit</button>
+                        <button onclick="deleteProduct(${index})">Delete</button>                        
+                    </td>
+                </tr>`
+            });
+        }
+
+        function deleteProduct(index){
+            const products = getProducts();
+            products.splice(index, 1);
+            saveProducts(products);
+            displayProducts();
+        }
+
+        function editProduct(index){
+            const products = getProducts();
+            const p = products[index];
+
+            document.getElementById("name").value = p.name;
+            document.getElementById("sku").value = p.sku;
+            document.getElementById("category").value = p.category;
+            document.getElementById("price").value = p.price;
+            document.getElementById("quantity").value = p.quantity;
+            document.getElementById("expiry").value = p.expiry;
+
+            document.querySelector(`input[name='status'][value="${p.status}"]`).checked = true;
+
+            editIndex = index;
+        }
+
+        document.getElementById("search").addEventListener("input", function(){
+            displayProducts(this.value);
+        });
+
+        displayProducts();
+    </script>
+</body>
+</html>
