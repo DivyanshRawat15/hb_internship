@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>FullHouse Game</title>
+    <style>
+        body{
+            font-family: Arial; text-align: center;
+        }
+        table{border-collapse: collapse; margin: 10px auto;}
+        td{width: 40px; height: 40px; border: 1px solid #333; text-align: center; font-weight: bold;}
+        .marked{background: green; color: white;}
+        .empty{background: #eee;}
+        #board td{ width: 30px; height: 30px; opacity: 0.4;}
+        #board .called{background: green; color: white; opacity: 1;}
+        button{padding: 8px 15px; margin: 10px;}
+    </style>
+</head>
+<body>
+    <h2>Full House Game</h2>
+
+    <button onclick="callNumber()">Call Number</button>
+    <h3 id="currentNumber"></h3>
+
+    <h3>Player Ticket</h3>
+    <table id="ticket"></table>
+
+    <h3>Master Board</h3>
+    <table id="board"></table>
+
+    <h3 id="result"></h3>
+    <script>
+        let callerNumbers = [];
+        let ticketNumbers = [];
+        let markedCount = 0;
+        let earlyFiveDone = false;
+
+        function generateTicket() {
+            const ticket = [];
+            for(let r=0; r<3; r++){
+                ticket[r] = new Array(9).fill(null);
+            }
+
+            let columnRanges = [
+                [1,10], [11,20], [21,30], [31,40], [41,50], [51,60], [61,70], [71,80], [81,90]
+            ];
+            let AllColumns = [];
+            for(let c = 0; c<9; c++){
+                let nums = [];
+                for(let i = columnRanges[c][0]; i<= columnRanges[c][1]; i++){
+                    nums.push(i);
+                }
+                nums.sort(() => Math.random() - 0.5);
+                allColumns[c] = nums.slice(0,3).sort((a,b)=>a-b);
+            }
+
+            for(let r = 0; r < 3; r++){
+                let cols = [...Array(9).keys()].sort(()=>Math.random()-0.5).slice(0,5);
+                cols.forEach(c=>{
+                    ticket[r][c] = allColumns[c].pop();
+                });
+            }
+
+            return ticket;
+        }
+
+        function renderTicket(ticket){
+            const table = documentgetElementById("ticket");
+            table.innerHTML = "";
+            for(let r=0; r<3; r++){
+                let row = "<tr>";
+                for(let c=0; c<9; c++){
+                    if(ticket[r][c]){
+                        row += `<td id="cell-${ticket[r][c]}">${ticket[r][c]}</td>`;
+                        ticketNumbers.push(ticket[r][c]);
+                    } else {
+                        row += `<td class="empty"></td>`;
+                    }
+                }
+                row += "</tr>";
+                table.innerHTML += row;
+            }
+        }
+
+        function createBoard(){
+            const board = document.getElementById("board");
+            let num = 1;
+            for(let r=0; r<9; r++){
+                let row = "<tr>";
+                for(let c=0; c<10; c++){
+                    row += `<td id="board-${num}">${num}</td>`;
+                    num++;
+                }
+                row += "</tr>";
+                board.innerHTML += row;
+            }
+        }
+
+        function callNumber(){
+            if(calledNumbers.length === 90) return;
+            let num;
+            do{
+                num = Math.floor(Math.random() * 90) + 1;
+            } while(calledNumbers.includes(num));
+            calledNumbers.push(num);
+            document.getElementById("currentNumber").innerText = "Called: " + num;
+            document.getElementById("board-" + num).classList.add("called");
+            if(ticketNumbers.includes(num)){
+                document.getElementById("cell-" + num).classList.add("marked");
+                markedCount++;
+                checkWin();
+            }
+        }
+
+        function checkWin(){
+            if(!earlyFiveDone && markedCount === 5){
+                documentgetElementById("result").innerText = "Early Five!";
+                earlyFiveDone = true;
+            }
+            let rows = document.querySelectorAll("#ticket tr");
+            rows.forEach((row, index) => {
+                let cells = row.querySelectorAll("td:not(.empty)");
+                let allMarked = [...cells].every(cell => cell.classList.contains("marked"));
+                if(allMarked){
+                    document.getElementById("result").innerText = "Line Completed!";
+                }
+            });
+
+            if(markedCount === 15){
+                document.getElementById("result").innerText = "FULL HOUSE!";
+            }
+        }
+
+        ticketNumbers = [];
+        let ticket = generateTicket();
+        renderTicket(ticket);
+        createBoard();
+
+    </script>
+</body>
+</html>
