@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TextArea with Character Limit</title>
+    <style>
+        body{font-family: Arial; margin: 30px; text-align: center;}
+        textarea{width: 400px; height: 150px; padding: 10px; font-size: 14px;}
+        .info{margin-top: 10px; font-weight: bold;}
+        .limit-reached{color: red;}
+    </style>
+</head>
+<body>
+    <h2>TextArea with Character Limit</h2>
+    
+    <label>Enter Max Character Limit:</label>
+    <input type="number" id="maxLimit" placeholder="Enter Limit (e.g. 100)">
+    <button onclick="setLimit()">SET LIMIT</button>
+
+    <br><br>
+
+    <textarea id="textArea" disabled></textarea>
+    <div class="info">
+        Remaining Characters: <span id="remaining">0/0</span><br>
+        Word Count: <span id="wordCount">0</span>
+    </div>
+
+    <script>
+        let maxCharacters = 0;
+        function setLimit(){
+            const inputLimit = document.getElementById("maxLimit").value;
+
+            if(inputLimit <= 0){
+                alert("Please enter a valid character limit.");
+                return;
+            }
+
+            maxCharacters = Number(inputLimit);
+
+            const textArea = document.getElementById("textArea");
+            textArea.disabled = false;
+            textArea.maxLength = maxCharacters;
+            textArea.value = "";
+
+            updateCounter();
+        }
+
+        document.getElementById("textArea").addEventListener("input", function(){
+            updateCounter();
+        });
+
+        function updateCounter(){
+            const textArea = document.getElementById("textArea");
+            const currentLength = textArea.value.length;
+            const remaining = maxCharacters - currentLength;
+            document.getElementById("remaining").innerText = currentLength + "/" + maxCharacters;
+
+            const words = textArea.value.trim().split(/\s+/).filter(word => word.length > 0);
+            document.getElementById("wordCount").innerText = textArea.value.trim() === "" ? 0 : words.length;
+            
+            if(currentLength >= maxCharacters){
+                textArea.classList.add("limit-reached");
+            } else {
+                textArea.classList.remove("limit-reached");
+            }
+        }
+    </script>
+</body>
+</html>
